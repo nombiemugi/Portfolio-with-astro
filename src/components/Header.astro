@@ -1,0 +1,27 @@
+---
+import Navigation from '../components/Navigation.astro'
+import ThemeToggle from '../components/ThemeToggle.astro'
+---
+
+<header>
+    <nav>
+        <Navigation />
+        <ThemeToggle />
+    </nav>
+</header>
+
+<style>
+    header {
+        padding: var(--spacing3);
+        background-color: var(--card-bg);
+        box-shadow: var(--card-shadow);
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1080px;
+        margin: 0 auto;
+    }
+</style>
