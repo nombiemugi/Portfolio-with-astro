@@ -1,11 +1,14 @@
 ---
+import '../styles/global.css';
 import Layout from '../layouts/Layout.astro';
+import Presentation from "../components/Presentation.astro";
+import Introduction from "../components/Introduction.astro";
+
 
 const pageTitle = "Home Page";
 ---
 <Layout>
-	<h1> Hello, my name is Andres Soler</h1>
-	<h2> Creative Full-Stack Web Developer
-		based in Bogota, Colombia</h2>
-
+	<Presentation />
+	<Introduction />
+	
 </Layout> 

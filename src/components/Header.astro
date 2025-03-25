@@ -1,27 +1,26 @@
 ---
+import '../styles/global.css';
+import Home from '../components/Home.astro'
 import Navigation from '../components/Navigation.astro'
 import ThemeToggle from '../components/ThemeToggle.astro'
+
 ---
 
-<header>
-    <nav>
+<header class="box-shadow">
+    <nav class="flex items-center justify-between w-full">
+        <Home />
         <Navigation />
         <ThemeToggle />
     </nav>
 </header>
 
-<style>
-    header {
-        padding: var(--spacing3);
-        background-color: var(--card-bg);
-        box-shadow: var(--card-shadow);
-    }
 
-    nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        max-width: 1080px;
-        margin: 0 auto;
-    }
-</style>
+
+
+
+
+
+
+
+
+

@@ -11,15 +11,16 @@
     /* Light theme variables */
     --color10: hsl(204, 80%, 10%);
     --color30: hsl(204, 80%, 30%);
-    --color90: hsl(204, 80%, 90%);
+    --color90: hsl(204, 100%, 96%);
     --color100: hsl(204, 80%, 100%);
+    --color120: hsl(0, 0%, 20%);
     --accent: hsl(336, 59%, 35%);
+    --icon-color: var(--color10); /* Light mode icon color */
     --background: var(--color90);
+    --ff: font-family: 'Onest', sans-serif;
     --text: var(--color10);
     --card-bg: var(--color100);
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --ff: "Inter", sans-serif;
-    --ff2: "Fira Sans", serif;
     --p: 1rem/1.5em var(--ff);
     --h1: 600 3rem/1.2em var(--ff2);
     --h2: 600 2rem/1.2em var(--ff2);
@@ -32,14 +33,26 @@
     --spacing7: 160px;
   }
 
+  /* onest-latin-wght-normal */
+@font-face {
+  font-family: 'Onest Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(@fontsource-variable/onest/files/onest-latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
 [data-theme="dark"] {
-    --color10: hsl(208, 57%, 5%);
+    --color10: hsl(300, 100%, 98%);
     --color30: hsl(208, 57%, 70%);
-    --color90: hsl(208, 57%, 10%);
+    --color90: hsl(208, 57%, 5%);
     --color100: hsl(208, 57%, 100%);
-    --accent: hsl(285, 91%, 91%);
+    --color120: hsl(231, 75%, 25%);
+    --accent: hsl(286, 100%, 78%);
+    --icon-color: var(--color10); /* Light mode icon color */
     --background: var(--color90);
-    --text: var(--color100);
+    --text: var(--color10);
     --card-bg: var(--color100);
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
@@ -60,31 +73,7 @@ body {
 
 
 /* Utility Classes */
-section {
-    width: 90%;
-    max-width: 1080px;
-    margin: 0 auto;
-  }
-  .center {
-    text-align: center;
-  }
-  .hidden {
-    display: none;
-  }
-  .flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing4);
-    flex-wrap: wrap;
-  }
-  .flex > * {
-    flex: 1;
-    min-width: 400px;
-  }
-  .reverse {
-    flex-direction: row-reverse;
-  }
+
   .padding1 {
     padding: var(--spacing1) 0;
   }
