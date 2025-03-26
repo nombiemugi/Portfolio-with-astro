@@ -1,10 +1,6 @@
 @import "tailwindcss";
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
  /* global variables */
 
   :root {
@@ -62,11 +58,24 @@ html{
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   background-color: var(--background);
-    text-wrap: balance;
-    font: var(--p);
-    color: var(--text);
-    transition: background-color 0.3s ease, color 0.3s ease;
+  text-wrap: balance;
+  font: var(--p);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@theme {
+  --tracking-tightest: -0.08em;
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-1: 0em;
+  --tracking-2: 0.025em;
+  --tracking-3: 0.05em;
+  --tracking-4: 0.1em;
 }
 
 
