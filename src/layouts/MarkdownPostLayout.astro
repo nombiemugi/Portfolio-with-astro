@@ -1,0 +1,31 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+---
+<Layout pageTitle={frontmatter.title}>
+
+    <main class=" font-extrabold m-15 mb-10 mx-110">
+		<h1 class="text-center text-[50px] md:text-[70px] lg:text-[96px] leading-[1] font-bold tracking-(--tracking-tightest) mb-6">
+             {frontmatter.title}
+        </h1>
+        <div class="flex justify-center ">
+            <img 
+            class="w-[1024px] h-[576px] object-cover rounded-lg" 
+            src={frontmatter.img} 
+            alt={frontmatter.title} 
+            />
+        </div>
+        <div class="mb-6">
+            <h1 class=" lg:text-2xl font-bold tracking-(--tracking-tightest) text-[var(--accent)]">
+                 Technologies: {frontmatter.technologies}
+            </h1>
+        </div>
+	</main>
+    
+
+    <div class="text-center mx-110 text-[10px] md:text-[12px] lg:text-[20px] leading-[1] font-light">
+        <slot class=" font-bold"/>
+    </div>
+
+    
+</Layout>

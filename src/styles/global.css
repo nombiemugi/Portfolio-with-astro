@@ -53,9 +53,7 @@
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-html{
-    scrollbar-behavior: smooth;
-}
+
 
 body {
   margin: 0;
