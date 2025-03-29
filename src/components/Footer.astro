@@ -4,7 +4,7 @@ import ThemeToggle from '../components/ThemeToggle.astro'
 
 <footer class="relative w-screen h-[285px] pb-32">
     <div
-        class="absolute inset-0 bg-cover bg-bottom bg-[url('../public/images/footer-sakura1.svg')] "
+        class="absolute inset-0 bg-cover bg-bottom bg-[url('../images/footer-sakura1.svg')] "
         style="mask-image: linear-gradient(to bottom, transparent 25%, black 100%);">
     </div>
     <div class="relative h-full flex flex-col justify-center items-center">
@@ -56,33 +56,3 @@ import ThemeToggle from '../components/ThemeToggle.astro'
     }
 </style>
 
-<script>
-    let currentTheme = 'light';
-
-    const initializeTheme = () => {
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-        applyTheme(currentTheme);
-    };
-
-    const applyTheme = (theme: string) => {
-        document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem('theme', theme);
-    };
-
-    const toggleTheme = () => {
-        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-        applyTheme(currentTheme);
-    };
-
-    // Inicializar el tema
-    initializeTheme();
-
-    // Agregar el event listener al botón
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    }
-</script> 
