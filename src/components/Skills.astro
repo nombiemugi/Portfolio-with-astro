@@ -1,15 +1,53 @@
 ---
-import '../styles/global.css';
+const skills = ["HTML", "CSS", "JavaScript", "Typescript", "React", "Astro", "NodeJs", "Git", "Python", "SQL", "Figma", "Canva", "Adobe"];
+
+const skillImages = {
+  HTML: "../images/skills/html.svg",
+  CSS: "/images/skills/css.svg",
+  JavaScript: "/images/skills/javascript.svg",
+  Typescript: "/images/skills/typescript.svg",
+  React: "/images/skills/react.svg",
+  Astro: "/images/skills/astroIcon.svg",
+  NodeJs: "/images/skills/nodejsIcon.svg",
+  Git: "/images/skills/git.svg",
+  Python: "/images/skills/python.svg",
+  SQL: "/images/skills/sql.svg",
+  Figma: "/images/skills/figma.svg",
+  Canva: "/images/skills/canva.svg",
+  Adobe: "/images/skills/adobe.svg",
+};
+
+const primerosSiete = skills.slice(0, 7);
+const resto = skills.slice(7);
 ---
 
 <section class="justify-center">
-    <div class="w-screen h-[300px] max-w-[calc(100vw_-_75px)] flex items-center justify-center not-[]:drop-shadow-sm">  
-        <h1 class="text-[20px] md:text-[42px] lg:text-[64px]
-         font-bold tracking-(--tracking-tightest) :md:tracking-wide">
-         What I work with</h1>          
-    </div>
-    <div class="flex justify-center items-center">
-        <h1 class="text-[24px] font-semibold tracking-tightest">Astro</h1>
-    </div>
+  <div class="w-screen h-[300px] max-w-[calc(100vw_-_75px)] flex items-center justify-center not-[]:drop-shadow-sm">
+    <h1 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-(--tracking-tightest) :md:tracking-wide">
+      What I work with
+    </h1>
+  </div>
 
+  <div class="flex justify-center items-center">
+    <ul class="flex flex-wrap justify-center items-center gap-4">
+      {primerosSiete.map((skill) => (
+        <li class="flex items-center gap-2">
+          <img src={skillImages[skill]} alt={skill} class="w-[42px] h-[42px] " />
+          <h1 class="skill text-[24px] font-semibold tracking-tightest">{skill}</h1>
+        </li>
+      ))}
+    </ul>
+  </div>
+  
+  <div class="flex justify-center items-center mt-8">
+    <ul class="flex flex-wrap justify-center items-center gap-4">
+      {resto.map((skill) => (
+        <li class="flex items-center gap-2">
+          <img src={skillImages[skill]} alt={skill} class="w-[42px] h-[90px]" />
+          <h1 class="skill text-[24px] font-semibold tracking-tightest">{skill}</h1>
+        </li>
+      ))}
+    </ul>
+  </div>
 </section>
+
