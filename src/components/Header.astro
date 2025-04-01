@@ -1,18 +1,81 @@
 ---
 import '../styles/global.css';
-import Home from '../components/Home.astro'
-import Navigation from '../components/Navigation.astro'
-import ThemeToggle from '../components/ThemeToggle.astro'
-
+import Home from '../components/Home.astro';
+import Navigation from '../components/Navigation.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import Hamburger from '../assets/svg/hamburguer.svg';
+import Quit from '../assets/svg/quit.svg'
+import Socials from '../components/Socials.astro';
 ---
 
-<header class="box-shadow mt-[30px]">
-    <nav class="flex items-center justify-around">
-      <Home />
+<header class=" mt-2 gap-10">
+  <nav class="flex items-center justify-around gap-0.5">
+    <div class="menu-header">
+      <Home /> 
+    </div>
       <Navigation />
+    
+
+    <div class="flex items-center gap-5">
+      <div class="hidden sm:block">
+        <Socials />
+      </div>
       <ThemeToggle />
-    </nav>
+      <button id="hamburgerButton" class="sm:hidden"> <Hamburger /></button>
+    </div>
+
+    <div class="hidden"></div>
+  </nav>
+  <div class="sidebar hidden"> 
+    <ul class="flex flex-col justify-start pl-5 gap-4 font-medium tracking-(--tracking-tightest) w-auto">
+      <button id="quitButton"> <Quit /></button>
+      <a href="/" class="hover:text-[var(--accent)] ">Home</a>
+      <a href="/projects" class="hover:text-[var(--accent)]">Projects</a>
+      <a href="/about" class="hover:text-[var(--accent)]">About</a>
+      <hr >
+      <div class="gap-1"><Socials/> </div>
+    </ul>
+  </div>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerButton = document.getElementById('hamburgerButton');
+    const sidebar = document.querySelector('.sidebar');
+    const quitButton = document.getElementById('quitButton');
+
+    hamburgerButton.addEventListener('click', () => {
+      sidebar.style.display = 'flex';
+    });
+
+    quitButton.addEventListener('click', () => {
+      sidebar.style.display = 'none';
+    });
+  });
+</script>
+
+<style>
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 1.5rem;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  z-index: 999;
+  background-color: rgb(red, green, rgb(102, 102, 102))
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+</style>
+
+
 
 
 

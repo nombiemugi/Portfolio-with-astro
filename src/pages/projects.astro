@@ -9,15 +9,15 @@ const projects = await getCollection('projects')
 const pageTitle = "My projects";
 ---
 <Layout >
-	<main class="text-center text-7xl font-extrabold m-15 mb-24">
-		<h1 class="text-[50px] md:text-[70px] lg:text-[96px] leading-[1] font-bold tracking-(--tracking-tightest)">
+	<main class=" mt-5 mb-20">
+		<h1 class=" text-center text-[30px] md:text-[50px] lg:text-[70px] xl:text-[96px] leading-[1] font-bold tracking-(--tracking-tightest)">
              {pageTitle}
         </h1>
 	</main>
 
 	<section aria-label="My projects">
 		<div class="px-4 mx-auto max-w-screen-xl">
-			<div class="grid gap-6 md:grid-cols-2">
+			<div class="grid gap-6 gap-x-1 md:grid-cols-2">
 				{
                     projects.map(project => {
                         const { slug, data } = project;
@@ -26,8 +26,8 @@ const pageTitle = "My projects";
 
                         return (
                             <article class="flex">
-                                <a href={`/projects/${slug}`} class="mb-2 xl:mb-0 transtion hover:scale-110">
-                                    <img class="mr-10 w-[264px] rounded-lg" src={img} alt={title}  />
+                                <a href={`/projects/${slug}`} class="mb-2 x1:mb-0 mr-5 transtion hover:scale-110">
+                                    <img class=" w-[200px]  rounded-lg" src={img} alt={title}  />
                                 </a>
 
                                 <div class="flex flex-col justify-center">

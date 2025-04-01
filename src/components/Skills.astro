@@ -21,9 +21,9 @@ const primerosSiete = skills.slice(0, 7);
 const resto = skills.slice(7);
 ---
 
-<section class="justify-center">
-  <div class="w-screen h-[300px] max-w-[calc(100vw_-_75px)] flex items-center justify-center not-[]:drop-shadow-sm">
-    <h1 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-(--tracking-tightest) :md:tracking-wide">
+<section class="mx-8">
+  <div class="w-screen h-[150px] lg:h-[250px] flex items-center justify-center text-center px-4">
+    <h1 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-(--tracking-tightest)">
       What I work with
     </h1>
   </div>
@@ -32,8 +32,8 @@ const resto = skills.slice(7);
     <ul class="flex flex-wrap justify-center items-center gap-4">
       {primerosSiete.map((skill) => (
         <li class="flex items-center gap-2">
-          <img src={skillImages[skill]} alt={skill} class="w-[42px] h-[42px] " />
-          <h1 class="skill text-[24px] font-semibold tracking-tightest">{skill}</h1>
+          <img src={skillImages[skill]} alt={skill} class="w-[30px] h-[30px] sm:w-[36px] sm:h-[36px] md:w-[42px] md:h-[42px] lg:w-[48px] lg:h-[48px]" />
+          <h1 class="skill text-base sm:text-lg md:text-xl lg:text-2xl font-semibold tracking-tightest">{skill}</h1>
         </li>
       ))}
     </ul>
@@ -43,8 +43,8 @@ const resto = skills.slice(7);
     <ul class="flex flex-wrap justify-center items-center gap-4">
       {resto.map((skill) => (
         <li class="flex items-center gap-2">
-          <img src={skillImages[skill]} alt={skill} class="w-[42px] h-[90px]" />
-          <h1 class="skill text-[24px] font-semibold tracking-tightest">{skill}</h1>
+          <img src={skillImages[skill]} alt={skill} class="w-[30px] h-[30px] sm:w-[36px] sm:h-[36px] md:w-[42px] md:h-[42px] lg:w-[48px] lg:h-[48px]" />
+          <h1 class="skill text-base sm:text-lg md:text-xl lg:text-2xl font-semibold tracking-tightest">{skill}</h1>
         </li>
       ))}
     </ul>

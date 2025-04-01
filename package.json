@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "build": "NODE_ENV=production tailwindcss build ./src/styles.css -o ./dist/styles.css"
   },
   "dependencies": {
     "@astrojs/node": "^9.1.3",

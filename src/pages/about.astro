@@ -6,34 +6,36 @@ const pageTitle = "About me";
 <Layout>
 	
 	<div class="parent">
-		<div class="div1 text-center mt-15">
-			<h1 class="text-[40px] md:text-[60px] lg:text-[80px] leading-[1] font-bold tracking-(--tracking-tight) m-10 ">About me </h1>
-			<p class="text-[20px] md:text-[25px] lg:text-[25px] leading-[1] font-extralight tracking-(--tracking-1) m-5 ">
+		<div class="div1 text-center mt-5">
+			<h1 class="text-[30px] md:text-[50px] lg:text-[70px] xl:text-[96px] leading-[1] font-bold tracking-(--tracking-tightest)">
+				About me 
+			</h1>
+			<p class="text-[12px] md:text-[18px] lg:text-[25px] leading-[1] font-extralight tracking-(--tracking-1) mt-5 mb-5 ">
 				Thanks for stopping by. Read below to learn more about myself and my background.
 			</p>
 			<img class=" m-auto w-[800px] rounded-4xl" src="/about_image.webp"  alt="Andres" > 
 		</div>
 		<div class="div2">
-			<h1 class="text-2xl font-bold tracking-(--tracking-tight) text-[var(--accent)]">Background</h1>
+			<h1 class="text-[12px] md:text-[18px] lg:text-[24px] font-bold tracking-(--tracking-tight) text-[var(--accent)]">Background</h1>
 		</div>
 		<div class="div3">
-			<p class="text-[20px] font-light tracking-(--tracking-tight)"> 
+			<p class="text-[12px] md:text-[18px] lg:text-[25px] font-light tracking-(--tracking-tight)"> 
 			I am a 27-year-old software developer currently residing in Bogotá, Colombia. I hold a Bachelor's degree in Philology with a focus on German, graduated in 2021. Additionally, I possess several programming certifications.
 			My expertise lies in German language and cultural knowledge, complemented by a strong background in design, marketing and programming, acquired through my recent professional experiences.
 		</p>
 		</div>
 		<div class="div4 ">
-			<h1 class="text-2xl font-bold tracking-(--tracking-tight) text-[var(--accent)]">Education</h1>
+			<h1 class="text-[12px] md:text-[18px] lg:text-[24px] font-bold tracking-(--tracking-tight) text-[var(--accent)]">Education</h1>
 			</div>
 		<div class="div5"> 
-			<p class="text-[20px] font-light tracking-(--tracking-tight)">
+			<p class="text-[12px] md:text-[18px] lg:text-[25px] font-light tracking-(--tracking-tight)">
 				Universidad Nacional de Colombia </div>
 			</p>
 		<div class="div6">
-			<h1 class="text-2xl font-bold tracking-(--tracking-tight) text-[var(--accent)]">Skills</h1> 
+			<h1 class="text-[12px] md:text-[18px] lg:text-[24px] font-bold tracking-(--tracking-tight) text-[var(--accent)]">Skills</h1> 
 		</div>
 		<div class="div7"> 
-			<p class="text-[20px] font-light tracking-(--tracking-tight)">
+			<p class="text-[12px] md:text-[18px] lg:text-[25px] font-light tracking-(--tracking-tight)">
 				I possess programming skills in both front-end and back-end languages. Furthermore, I am proficient in design applications for creating websites and web applications. My soft skills include teamwork, self-motivated learning, empathy, versatility, and assertive communication.</div>
 			</p>
 		</div>
@@ -46,7 +48,7 @@ const pageTitle = "About me";
 	.parent {
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
-		grid-template-rows: auto auto 120px 50px 100px auto auto; /* Adjusted rows */
+		grid-template-rows: auto auto auto auto auto auto auto; /* Adjusted rows */
 		grid-column-gap: 5px;
 		grid-row-gap: 10px; /* Reduced gap */
 	}
