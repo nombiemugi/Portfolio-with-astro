@@ -3,7 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-  "build": "NODE_ENV=production npx tailwindcss build ./src/styles/global.css -o ./dist/styles.css"
+    "build": "NODE_ENV=production tailwindcss build ./src/styles/global.css -o ./dist/styles.css",
+    "build:netlify": "npm install && npm run build"
   },
   "dependencies": {
     "@astrojs/node": "^9.1.3",
