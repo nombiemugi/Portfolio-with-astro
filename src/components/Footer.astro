@@ -10,7 +10,7 @@ import "../styles/global.css";
     </div>
     <div class="relative h-full flex flex-col justify-center items-center">
         <div class="p-4 flex justify-center items-center h-full w-full">
-            <div class="text-center text-[var(--color10)] font-medium text-[12px] md:text-[20px] lg:text-[28px]">
+            <div class="text-center text-[var(--color10)] font-light md:font-medium text-[12px] sd:text-[10px] md:text-[20px] lg:text-[28px]">
                 <p>© 2025 Andres Soler | Created in Bogota, Colombia</p> 
                 <p>Built with love using <a class="underline hover:text-[var(--accent)]" href="https://astro.build/" target="_blank">Astro.</a>
                     Look at some of my projects on 
@@ -28,32 +28,5 @@ import "../styles/global.css";
         }
     </style>
 
-<style>
-    .theme-toggle {
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 8px;
-        border-radius: 50%;
-        color: var(--color10);
-        transition: background-color 0.3s ease;
-    }
 
-    .theme-toggle:hover {
-        background-color: var(--accent);
-    }
-
-    .sun-icon, .moon-icon {
-        width: 24px;
-        height: 24px;
-    }
-
-    [data-theme="dark"] .sun-icon {
-        display: none;
-    }
-
-    [data-theme="light"] .moon-icon {
-        display: none;
-    }
-</style>
 
