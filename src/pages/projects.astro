@@ -22,28 +22,29 @@ const pageTitle = "My projects";
 				{
                     projects.map(project => {
                         const { slug, data } = project;
-                        const { title, author, img, date, description, technologies, tags } = 
-						data
+                        const { title, img, description } = data;
 
                         return (
-                            <article class="flex">
-                                <a href={`/projects/${slug}`} class="mb-2 x1:mb-0 mr-5 transtion hover:scale-110">
-                                    <img class=" w-[200px]  rounded-lg" src={img} alt={title}  />
+                            <article key={slug} class="flex  gap-4"> {/* items-start alinea verticalmente al inicio, gap-4 añade espaciado */}
+                                <a href={`/projects/${slug}`} class="shrink-0 transition hover:scale-105">
+                                    <img
+                                        class="w-[150px] h-[84.38px] lg:w-[350px] lg:h-[196.88px] object-cover rounded-lg" {/* Ajusta el tamaño fijo y usa object-cover */}
+                                        src={img}
+                                        alt={title}
+                                    />
                                 </a>
 
                                 <div class="flex flex-col justify-center">
-                                    <h2 class="mb-4 text-2x1 font-extrabold leading-tight text-[var(--accent)]">
+                                    <h2 class="mb-2 text-xl font-semibold leading-tight text-[var(--accent)]"> {/* Ajusté tamaños de fuente y márgenes */}
                                         {title}
                                     </h2>
-
-                                    <p class="mb 4 max-w-sm font-light">{description}</p>
+                                    <p class="text-sm font-light">{description}</p> {/* Ajusté tamaño de fuente */}
                                 </div>
                             </article>
                         );
-                    })
-                }
-			</div>
-		</div>
-	</section>
-	
+                    })}
+                </div>
+            </div>
+        </section>
+     </main>       
 </Layout> 

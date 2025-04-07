@@ -3,7 +3,7 @@ layout: ../../layouts/MarkdownPostLayout.astro
 title: Stock Manager
 description: An application that manages real time stock.
 date: "2023-10-27" # Corrected date type
-img: "/Stock-manager.png"
+img: "/Stock-manager.webp"
 url: www.google.com
 author: Andres Soler
 technologies: Html, Css, JavaScript, Python, Flask, Jinja, AJAX, Sqlite, Werkzeug

@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: URL Shortener
-description: An application that shortens URL.
+description: An application that shortens URL's.
 date: "2025-04-07" # Corrected date type
 img: "/url_shortener.webp"
 url: https://url-shortener-oq053n19b-andres-solers-projects.vercel.app/
