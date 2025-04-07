@@ -7,9 +7,8 @@ export default defineConfig({
     vite: {
       plugins: [tailwindcss()],
     },
-    experimental:{
-      svg:{
-        mode: 'sprite'
-      }
-    }
-  });
+    experimental: {
+      svg: true,
+    },
+   }
+  );
