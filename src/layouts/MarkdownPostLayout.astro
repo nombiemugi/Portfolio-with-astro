@@ -20,10 +20,11 @@ const { frontmatter } = Astro.props;
             <h1 class="text-lg font-bold tracking-(--tracking-tightest) text-[var(--accent)] leading-[1]">
               Technologies: {frontmatter.technologies}
             </h1>
+            <div class="text-left w-full text-sm md:text-base lg:text-lg font-light mt-2">
+              <slot class="font-bold" />
+            </div>
           </div>
-          <div class="w-full lg:w-[1024px] text-sm md:text-base lg:text-lg font-light"">
-            <slot class="font-bold" />
-          </div>
+          
         </div>
       </main>
     
