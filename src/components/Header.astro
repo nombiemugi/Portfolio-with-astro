@@ -6,6 +6,7 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 import Hamburger from '../assets/svg/hamburguer.svg';
 import Quit from '../assets/svg/quit.svg'
 import Socials from '../components/Socials.astro';
+import Switch from './Switch.astro';
 ---
 
 <header class=" mt-2 gap-10">
@@ -20,7 +21,9 @@ import Socials from '../components/Socials.astro';
       <div class="hidden sm:block">
         <Socials />
       </div>
-      <ThemeToggle />
+      <!-- <ThemeToggle />  -->
+      <Switch />
+      
       <button id="hamburgerButton" class="sm:hidden"> <Hamburger /></button>
     </div>
 
@@ -73,6 +76,7 @@ import Socials from '../components/Socials.astro';
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
 }
+
 </style>
 
 

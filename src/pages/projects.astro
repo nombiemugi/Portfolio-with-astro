@@ -25,7 +25,7 @@ const pageTitle = "My projects";
                         const { title, img, description } = data;
 
                         return (
-                            <article key={slug} class="flex  gap-4"> {/* items-start alinea verticalmente al inicio, gap-4 añade espaciado */}
+                            <article key={slug} class="flex  gap-4"> {/* items-start alinea verticalmente al inicio */}
                                 <a href={`/projects/${slug}`} class="shrink-0 transition hover:scale-105">
                                     <img
                                         class="w-[150px] h-[84.38px] lg:w-[350px] lg:h-[196.88px] object-cover rounded-lg" {/* Ajusta el tamaño fijo y usa object-cover */}
@@ -38,7 +38,7 @@ const pageTitle = "My projects";
                                     <h2 class="mb-2 text-xl font-semibold leading-tight text-[var(--accent)]"> {/* Ajusté tamaños de fuente y márgenes */}
                                         {title}
                                     </h2>
-                                    <p class="text-sm font-light">{description}</p> {/* Ajusté tamaño de fuente */}
+                                    <p class="text-sm font-light">{description}</p> {/* Ajusté el tamaño de fuente */}
                                 </div>
                             </article>
                         );
