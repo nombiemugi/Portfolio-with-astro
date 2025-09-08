@@ -1,5 +1,10 @@
 ---
-const { pageTitle = "Andres Soler" } = Astro.props;
+const {
+  pageTitle = "Andres Soler",
+  pageDescription = "Creative Web Developer & Marketing Specialist based in Bogotá, Colombia.",
+  pageImage = "/default-preview.webp", // puedes subir una a /public/
+  pageUrl = "https://andressoler.netlify.app" // cambia si usas dominio propio
+} = Astro.props;
 
 import '@fontsource/onest/400.css';
 import '@fontsource/onest/700.css';
@@ -14,13 +19,29 @@ import Footer from '../components/Footer.astro';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/ico" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Title -->
+    <!-- Title & Description -->
     <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={`${pageUrl}${pageImage}`} />
+    <meta property="og:url" content={pageUrl} />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={`${pageUrl}${pageImage}`} />
   </head>
   <body>
     <Header />
@@ -28,7 +49,7 @@ import Footer from '../components/Footer.astro';
       <slot />
     </main>
     <Footer />
-    
+
     <!-- Scripts -->
     <script type="module" src="/scripts/menu.js"></script>
   </body>

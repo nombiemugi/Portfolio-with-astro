@@ -8,8 +8,12 @@ import { getCollection } from 'astro:content';
 const projects = await getCollection('projects')
 
 const pageTitle = "My projects";
+const pageDescription = "Creative Web Developer & Marketing Specialist based in Bogotá, Colombia. Explore my portfolio and skills.";
 ---
-<Layout pageTitle={pageTitle}>
+<Layout 
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+>
     	<main class=" mt-5 mb-20">
 		<h1 class=" text-center text-[30px] md:text-[50px] lg:text-[70px] xl:text-[96px] leading-[1] font-bold tracking-(--tracking-tightest)">
              {pageTitle}
