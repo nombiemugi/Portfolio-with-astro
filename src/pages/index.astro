@@ -4,13 +4,15 @@ import Layout from '../layouts/Layout.astro';
 import Presentation from "../components/Presentation.astro";
 import Introduction from "../components/Introduction.astro";
 import Skills from "../components/Skills.astro";
-import "../styles/global.css";
 
 const pageTitle = "Home Page - Andres Soler";
+const pageDescription = "Creative Web Developer & Marketing Specialist based in Bogotá, Colombia. Explore my portfolio and skills.";
 ---
-<Layout pageTitle={pageTitle}>
-	<Presentation />
-	<Introduction />
-	<Skills />
-	
-</Layout> 
+<Layout 
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+>
+  <Presentation />
+  <Introduction />
+  <Skills />
+</Layout>
