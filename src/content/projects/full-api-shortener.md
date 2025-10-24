@@ -6,7 +6,7 @@ date: "2025-04-30" # Corrected date type
 img: "/url-dashboard.webp"
 url: https://mugiurl.netlify.app/
 author: Andres Soler
-technologies: React, JavaScript, SQL, HTML, TailwindCSS, Vite
+technologies: React, JavaScript, SQL, HTML, TailwindCSS, NextJS
 tags: Full API, frontend, backend, fullstack
 ---
 

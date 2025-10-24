@@ -10,7 +10,7 @@ technologies: Html, CSS, JavaScript, React
 tags: URL, frontend, backend, API
 ---
 
-Develop an application that allows you to shorten the URLs of the link you place. I did it using the free Pxl API to shorten the URLs. Additionally, you can automatically copy it to the clipboard by pressing the button next to the shortened version.
+Develop an application that allows you to shorten the URLs of the link you place. I did it using the free TinyURL API to shorten the URLs. Additionally, you can automatically copy it to the clipboard by pressing the button next to the shortened version.
 
 <br>
 You can see the project at the following <a href="https://url-shortener-andres-solers-projects.vercel.app/" target="blank" class="hover:text-[var(--accent)] underline"> link.
