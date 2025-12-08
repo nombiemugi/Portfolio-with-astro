@@ -10,34 +10,28 @@ import "../styles/global.css";
 <script>
   function applyTheme(theme) {
     const root = document.documentElement;
-    
     if (theme === 'dark') {
       root.setAttribute('data-theme', 'dark');
     } else {
       root.removeAttribute('data-theme');
     }
-    
     localStorage.setItem('theme', theme);
   }
 
-  function getInitialTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) return savedTheme;
-    
-    return window.matchMedia('(prefers-color-scheme: dark)').matches 
-      ? 'dark' 
-      : 'light';
+  // ESTE BLOQUE SE EJECUTA INMEDIATAMENTE, NO ESPERA DOMContentLoaded
+  const checkbox = document.getElementById('checkbox');
+  const savedTheme = localStorage.getItem('theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
+
+  // sincroniza checkbox sin re-aplicar el tema (ya aplicado desde el head)
+  if (checkbox) {
+    checkbox.checked = initialTheme === 'dark';
   }
 
+  // Listener para cambios
   document.addEventListener('DOMContentLoaded', () => {
-    const checkbox = document.getElementById('checkbox');
-    const currentTheme = getInitialTheme();
-    applyTheme(currentTheme);
-
-    // Sincronizamos el estado inicial del checkbox con el tema
-    checkbox.checked = currentTheme === 'dark';
-
-    // Escuchamos cambios en el checkbox
+    if (!checkbox) return;
     checkbox.addEventListener('change', () => {
       applyTheme(checkbox.checked ? 'dark' : 'light');
     });
