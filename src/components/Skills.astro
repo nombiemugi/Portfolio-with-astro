@@ -1,53 +1,174 @@
 ---
-const skills = ["HTML", "CSS", "JavaScript", "Typescript", "React", "Astro", "NodeJs", "Git", "Python", "SQL", "Figma", "Canva", "Adobe"];
+/* -----------------------------
+   SVG Imports
+-------------------------------- */
+import HtmlIcon from "/public/images/skills/html.svg";
+import CssIcon from "/public/images/skills/css.svg";
+import JsIcon from "/public/images/skills/javascript.svg";
+import TsIcon from "/public/images/skills/typescript.svg";
+import ReactIcon from "/public/images/skills/react.svg";
+import AstroIcon from "/public/images/skills/astroIcon.svg";
+import NodeIcon from "/public/images/skills/nodejsIcon.svg";
+import GitIcon from "/public/images/skills/git.svg";
+import PythonIcon from "/public/images/skills/python.svg";
+import SqlIcon from "/public/images/skills/sql.svg";
+import FigmaIcon from "/public/images/skills/figma.svg";
+import CanvaIcon from "/public/images/skills/canva.svg";
+import AdobeIcon from "/public/images/skills/adobe.svg";
+import PhpIcon from "/public/images/skills/php.svg";
+import WordpressIcon from "/public/images/skills/wordpress.svg";
 
-const skillImages = {
-  HTML: "../images/skills/html.svg",
-  CSS: "/images/skills/css.svg",
-  JavaScript: "/images/skills/javascript.svg",
-  Typescript: "/images/skills/typescript.svg",
-  React: "/images/skills/react.svg",
-  Astro: "/images/skills/astroIcon.svg",
-  NodeJs: "/images/skills/nodejsIcon.svg",
-  Git: "/images/skills/git.svg",
-  Python: "/images/skills/python.svg",
-  SQL: "/images/skills/sql.svg",
-  Figma: "/images/skills/figma.svg",
-  Canva: "/images/skills/canva.svg",
-  Adobe: "/images/skills/adobe.svg",
+/* -----------------------------
+   Skill Registry
+-------------------------------- */
+const skillIcons = {
+  HTML: HtmlIcon,
+  CSS: CssIcon,
+  JavaScript: JsIcon,
+  TypeScript: TsIcon,
+  React: ReactIcon,
+  Astro: AstroIcon,
+  "Node.js": NodeIcon,
+  Git: GitIcon,
+  Python: PythonIcon,
+  SQL: SqlIcon,
+  PostgreSQL: SqlIcon,
+  Figma: FigmaIcon,
+  Canva: CanvaIcon,
+  Adobe: AdobeIcon,
+  PHP: PhpIcon,
+  WordPress: WordpressIcon,
 };
 
-const primerosSiete = skills.slice(0, 7);
-const resto = skills.slice(7);
-import "../styles/global.css";
+const skills = Object.entries(skillIcons);
 ---
 
-<section>
+<section class="overflow-hidden">
+
+  <!-- ✅ TITLE -->
   <div class="w-screen h-[150px] lg:h-[250px] flex items-center justify-center text-center px-4">
-    <h1 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-tightest">
+    <h1 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-tighter">
       What I work with
     </h1>
   </div>
-  <div class="mx-2 flex justify-center items-center">
-    <ul class="flex flex-wrap justify-center items-center gap-4">
-      {primerosSiete.map((skill) => (
-        <li class="flex items-center gap-2">
-          <img src={skillImages[skill]} alt={skill} class="w-[30px] h-[30px] sm:w-[36px] sm:h-[36px] md:w-[42px] md:h-[42px] lg:w-[48px] lg:h-[48px]" />
-          <h1 class="skill text-base sm:text-lg md:text-xl lg:text-2xl font-semibold tracking-tightest">{skill}</h1>
-        </li>
-      ))}
+
+  <!-- ✅ CAROUSEL WRAPPER -->
+  <div class="carousel">
+
+    <!-- ✅ SCROLL TRACK -->
+    <ul class="carousel-track">
+
+      <!-- FIRST PASS -->
+      {skills.map(([name, Icon]) => {
+        const Svg = Icon;
+        return (
+          <li class="skill-item" key={`a-${name}`}>
+            <Svg class="skill-icon" />
+            <h1 class="skill">{name}</h1>
+          </li>
+        );
+      })}
+
+      <!-- DUPLICATE PASS FOR LOOP -->
+      {skills.map(([name, Icon]) => {
+        const Svg = Icon;
+        return (
+          <li class="skill-item" key={`b-${name}`}>
+            <Svg class="skill-icon" />
+            <h1 class="skill">{name}</h1>
+          </li>
+        );
+      })}
+
     </ul>
+
   </div>
-  
-  <div class="flex justify-center items-center mt-8">
-    <ul class="flex flex-wrap justify-center items-center gap-4">
-      {resto.map((skill) => (
-        <li class="flex items-center gap-2">
-          <img src={skillImages[skill]} alt={skill} class="w-[30px] h-[30px] sm:w-[36px] sm:h-[36px] md:w-[42px] md:h-[42px] lg:w-[48px] lg:h-[48px]" />
-          <h1 class="skill text-base sm:text-lg md:text-xl lg:text-2xl font-semibold tracking-tightest">{skill}</h1>
-        </li>
-      ))}
-    </ul>
-  </div>
+
 </section>
 
+<style>
+  /* -----------------------------
+     ICON COLORS
+  ------------------------------*/
+  .skill-icon {
+    color: var(--icon-color);
+    width: 48px;
+    height: 48px;
+    transition: color 0.3s ease;
+  }
+
+  .skill {
+    font-weight: 600;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    letter-spacing: var(--tracking-tightest);
+  }
+
+
+  /* -----------------------------
+     CAROUSEL LAYOUT
+  ------------------------------*/
+  .carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: scroll 30s linear infinite;
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+
+  /* -----------------------------
+     ANIMATION
+  ------------------------------*/
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+
+  /* -----------------------------
+     UX EXTRAS
+  ------------------------------*/
+
+  /* Pause on hover */
+  .carousel:hover .carousel-track {
+    animation-play-state: paused;
+  }
+
+  /* Slight fade mask edges (optional luxury) */
+  .carousel::before,
+  .carousel::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 64px;
+    height: 100%;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .carousel::before {
+    left: 0;
+    background: linear-gradient(to right, var(--background), transparent);
+  }
+
+  .carousel::after {
+    right: 0;
+    background: linear-gradient(to left, var(--background), transparent);
+  }
+</style>
