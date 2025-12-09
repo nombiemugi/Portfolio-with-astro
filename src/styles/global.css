@@ -20,6 +20,7 @@
     --p: 1rem/1.5em var(--ff);
     --h1: 600 3rem/1.2em var(--ff2);
     --h2: 600 2rem/1.2em var(--ff2);
+    --icon-color: var(--accent); /* ex: pink in light mode */
     --spacing1: 4px;
     --spacing2: 8px;
     --spacing3: 16px;
@@ -28,6 +29,10 @@
     --spacing6: 80px;
     --spacing7: 160px;
   }
+
+  .skill-icon {
+  color: var(--icon-color);
+}
 
   /* onest-latin-wght-normal */
 @font-face {
@@ -51,9 +56,8 @@
     --text: var(--color10);
     --card-bg: var(--color100);
     --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --icon-color: var(--accent); /* ex: pink in light mode */
 }
-
-
 
 body {
   margin: 0;
