@@ -82,6 +82,44 @@ body {
 }
 
 
+body:has(.sidebar:not(.hidden)) {
+  overflow: hidden;
+}
+/* SCROLLBAR CUSTOMIZATION - global */
+
+/* Firefox — usa html o :root para que sea realmente global */
+html {
+  scrollbar-width: thin;                      /* thin | auto | none */
+  scrollbar-color: var(--accent) var(--color90); /* thumb track */
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; /* para scroll horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color90); /* track (fondo) */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);  /* thumb (el "palo" que mueves) */
+  border-radius: 10px;
+  border: 2px solid transparent; /* para dar "padding" visual */
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color30); /* más oscuro al hover */
+}
+
+/* esquina del scrollbar (cuando hay tanto X como Y) */
+::-webkit-scrollbar-corner {
+  background: var(--color90);
+}
+
+
 
 
 /* Utility Classes */
