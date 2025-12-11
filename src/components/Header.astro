@@ -9,8 +9,8 @@ import Socials from '../components/Socials.astro';
 import Switch from './Switch.astro';
 ---
 
-<header class="mt-2 gap-10">
-  <nav class="flex items-center justify-around gap-0.5">
+<header class="mt-2 gap-10 ">
+  <nav class="flex items-center justify-around gap-0.5 ">
     <div class="menu-header">
       <Home />
     </div>
@@ -31,17 +31,21 @@ import Switch from './Switch.astro';
     </div>
   </nav>
 
+
   <!-- SIDEBAR MOBILE -->
   <div class="sidebar hidden flex-col">
-    <ul class="flex flex-col justify-start pl-5 gap-4 font-medium tracking-[var(--tracking-tightest)] w-auto">
-      <li>
-        <button id="quitButton" aria-label="Close menu">
+    <hr class="border-t-2 border-[var(--accent)] mt-2"/>
+      
+    <ul class="flex flex-col justify-start pl-5 gap-4 font-medium tracking-[var(--tracking-tightest)] w-auto text-white">
+      <li class="flex items-center justify-between">
+        <a href="/" class="hover:text-[var(--accent)]">Home</a>
+        <button
+          id="quitButton"
+          aria-label="Close menu"
+          class="transform translate-x-0 translate-y-0 -ml-8"
+        >
           <Quit />
         </button>
-      </li>
-
-      <li>
-        <a href="/" class="hover:text-[var(--accent)]">Home</a>
       </li>
 
       <li>
@@ -51,16 +55,19 @@ import Switch from './Switch.astro';
       <li>
         <a href="/about" class="hover:text-[var(--accent)]">About</a>
       </li>
-
-      <hr class="my-2" />
-
+        <br>
+          <br>
+    </ul>
+  
+    <ul class="flex flex-col justify-start pl-5 gap-4 font-medium tracking-[var(--tracking-tightest)] w-auto">
       <li>
+        <h1 class="transform translate-x-0 translate-y-3 color text-amber-50">Socials</h1>
         <Socials />
       </li>
     </ul>
+    <hr class="border-t-2 border-[var(--accent)] mt-2" />
   </div>
 </header>
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
       const hamburgerButton = document.getElementById('hamburgerButton');
@@ -99,7 +106,7 @@ import Switch from './Switch.astro';
   z-index: 999;
 
   /* Fondo tipo glassmorphism */
-  background-color: rgba(40, 40, 40, 0.7);
+  background-color: rgba(61, 61, 61, 0.7);
   backdrop-filter: blur(6px);
   box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
 }
