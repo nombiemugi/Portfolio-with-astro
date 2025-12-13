@@ -1,5 +1,5 @@
+// src/content/config.ts
 import { defineCollection, z } from "astro:content";
-// z -> zoc schema
 
 const projects = defineCollection({
     schema: z.object({
@@ -9,9 +9,10 @@ const projects = defineCollection({
         img: z.string(),
         url: z.string(),
         author: z.string(),
-        technologies: z.string(),
-        tags: z.string(),
+        technologies: z.array(z.string()),        
+        tags: z.array(z.string()),
+        order: z.number().optional(), 
     })
-})
+});
 
 export const collections = { projects }

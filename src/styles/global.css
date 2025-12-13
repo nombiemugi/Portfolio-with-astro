@@ -6,11 +6,14 @@
   :root {
     /* Light theme variables */
     --color10: hsl(204, 80%, 10%);
+    --color10-card: hsl(204, 80%, 10%);
     --color30: hsl(204, 80%, 30%);
     --color90: hsl(204, 100%, 96%);
+    --color90-lowcontrast: hsl(204, 80%, 88%);
     --color100: hsl(204, 80%, 100%);
     --color120: hsl(0, 0%, 20%);
     --accent: hsl(336, 59%, 35%);
+    --accent-glow: hsl(336, 80%, 50%);
     --icon-color: var(--color10); /* Light mode icon color */
     --background: var(--color90);
     --ff: font-family: 'Onest', sans-serif;
@@ -46,11 +49,14 @@
 
 [data-theme="dark"] {
     --color10: hsl(300, 100%, 98%);
+    --color10-card: hsl(300, 10%, 98%);
     --color30: hsl(208, 57%, 70%);
     --color90: hsl(208, 57%, 5%);
+    --color90-lowcontrast: hsl(208, 40%, 10%);
     --color100: hsl(208, 57%, 100%);
     --color120: hsl(231, 75%, 25%);
     --accent: hsl(286, 100%, 78%);
+    --accent-glow: hsl(286, 100%, 88%);
     --icon-color: var(--color10); /* Light mode icon color */
     --background: var(--color90);
     --text: var(--color10);
@@ -166,3 +172,6 @@ html {
   .margin7 {
     margin: var(--spacing7) auto;
   }
+
+
+  
