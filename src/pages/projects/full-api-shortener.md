@@ -2,12 +2,26 @@
 layout: ../../layouts/MarkdownPostLayout.astro
 title: Fullstack API Url shortener
 description: Application that creates and manages shortened Url's
-date: "2025-04-30" # Corrected date type
+date: "2025-04-30"
 img: "/url-dashboard.webp"
-url: https://mugiurl.netlify.app/
+url: "https://mugiurl.netlify.app/"
 author: Andres Soler
-technologies: React, JavaScript, SQL, HTML, TailwindCSS, Vite
-tags: Full API, frontend, backend, fullstack
+
+technologies:
+  - React
+  - JavaScript
+  - SQL
+  - HTML
+  - TailwindCSS
+  - Vite
+
+tags:
+  - Full API
+  - frontend
+  - backend
+  - fullstack
+
+order: 1
 ---
 
 The application hosted at <a href="https://mugiurl.netlify.app/" target="blank" class="hover:text-[var(--accent)] underline">**this website**</a> is a web-based tool designed to facilitate the shortening of URLs. Developed using the Vite build tool in conjunction with the React JavaScript library, the application offers a streamlined and efficient user experience for generating compact, shareable links.​

@@ -1,0 +1,52 @@
+@layer base {
+  :root {
+    --card: var(--color100);
+    --card-foreground: var(--color10);
+
+    --muted: var(--color30);
+    --muted-foreground: var(--color120);
+
+    --border: var(--color30);
+    --input: var(--color30);
+
+    --accent: var(--accent);
+    --accent-foreground: var(--color100);
+  }
+
+  /* Modo oscuro si lo quieres */
+  [data-theme="dark"] {
+    --card: var(--color90);
+    --card-foreground: var(--color10);
+
+    --muted: var(--color120);
+    --muted-foreground: var(--color30);
+
+    --border: var(--color120);
+    --input: var(--color120);
+
+    --accent: var(--accent);
+    --accent-foreground: var(--color10);
+  }
+}
+
+
+@layer base {
+  .bg-card {
+    background-color: var(--card);
+  }
+  .text-card-foreground {
+    color: var(--card-foreground);
+  }
+
+  .text-muted-foreground {
+    color: var(--muted-foreground);
+  }
+
+  .bg-muted {
+    background-color: var(--muted);
+  }
+
+  .border {
+    border-color: var(--border);
+  }
+}

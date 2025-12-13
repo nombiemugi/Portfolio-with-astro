@@ -1,9 +1,7 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
 import '../styles/tokens.css';
 import { getCollection } from 'astro:content';
-import FolderIcon from "/public/images/skills/folder.svg";
 
 import {
   Card,
@@ -23,33 +21,26 @@ const sortedProjects = projects.sort((a, b) => {
 
 
 
-const pageTitle = "Projects";
+const pageTitle = "Latest projects";
 const pageDescription = "Creative Web Developer & Marketing Specialist based in Bogotá, Colombia. Explore my portfolio and skills.";
 ---
 
-<Layout 
-  pageTitle={pageTitle}
-  pageDescription={pageDescription}
->
-
-        <main class="mt-5 mb-5">
-            <div class="mx-auto w-full max-w-6xl px-4"> 
-                
+        <main class="">
+            <div class="mt-15 mb-15 mx-auto w-full max-w-6xl px-4"> 
                 <!-- TITLE -->
-                <div class="flex items-center gap-3">
-                    <FolderIcon />
-                    <h1 class="hover:text-[var(--acent-glow)] text-left text-[30px] md:text-[40px] lg:text-[50px] xl:text-[50px] leading-[1] font-bold tracking-tight ">
+                <div class="m-16 flex items-center justify-center text-center px-4">
+                    <h1 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-tighter">
                         {pageTitle}
                     </h1>
                 </div>
 
                 <!-- PROJECTS GRID -->
                 <section aria-label="My projects" class="mt-10">
-                    <div class="grid gap-6 md:grid-cols-3">
-                        {sortedProjects.map(project => {
+                    <div class="grid gap-6 md:grid-cols-2">
+                            {sortedProjects.slice(0, 2).map(project => { // Muestra los primeros 3 proyectos (índices 0, 1, 2)
+                            // Extrae los datos
                             const { slug, data } = project;
                             const { title, img, description, technologies } = data;
-
                             return (
                                 <a 
                                     href={`/projects/${slug}`} 
@@ -109,14 +100,16 @@ const pageDescription = "Creative Web Developer & Marketing Specialist based in 
 
                                     </Card>
                                 </a>
-
-
-
-                            );
+                            )
                         })}
                     </div>
+                    <div class="md:col-span-2 mt-4 text-right">
+                        <a href="/projects">
+                            <p class="inline-block text-[var(--accent)]  hover:text-[var(--accent-glow)] transition-colors duration-300 font-semibold cursor-pointer"> 
+                                View all my projects here &rarr;
+                            </p>
+                        </a>
+                    </div>
                 </section>
-
             </div>
         </main>
-</Layout>
