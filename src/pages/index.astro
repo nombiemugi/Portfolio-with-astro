@@ -5,7 +5,12 @@ import Presentation from "../components/Presentation.astro";
 import Introduction from "../components/Introduction.astro";
 import Skills from "../components/Skills.astro";
 import Projects from "../components/Projects.astro";
+import { getCollection } from 'astro:content';
+import ExperienceSection from '../components/Experience.astro';
 
+
+// 🎯 CLAVE 1: Obtener la data aquí
+const experiences = await getCollection('experience');
 const pageTitle = "Home Page - Andres Soler";
 const pageDescription = "Creative Web Developer & Marketing Specialist based in Bogotá, Colombia. Explore my portfolio and skills.";
 ---
@@ -17,5 +22,11 @@ const pageDescription = "Creative Web Developer & Marketing Specialist based in 
   <Introduction />
   <Skills />
   <Projects />
+  <div class="m-16 flex items-center justify-center text-center px-4">
+    <h1 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-tighter">
+        Work Experience
+    </h1>
+  </div>
+  <ExperienceSection experiences={experiences} />
 
 </Layout>

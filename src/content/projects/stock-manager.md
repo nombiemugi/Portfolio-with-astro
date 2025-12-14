@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: Stock Manager
 description: An application that manages real time stock.
 date: "2023-10-27"

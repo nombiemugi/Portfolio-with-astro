@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 order: 4
 title: Fit Application
 description: Application made to count intake calories per day.
