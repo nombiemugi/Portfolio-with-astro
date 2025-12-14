@@ -1,11 +1,26 @@
 ---
 import '../styles/global.css';
-import Terminal from "../assets/svg/terminal.svg";
+import Terminal from "../assets/svg/terminal.svg?raw";
 ---
 
 <div class="flex items-center tracking-(--tracking-tightest)">
-    <a href="/" class="flex space-x-2 items-center ">
-      <Terminal class="w-12 h-12 md:w-16 md:h-16 lg:w-18 lg:h-18"/>
-      <span class="text-[var(--accent)] text-[16px] md:text-3xl lg:text-[48px] font-bold ">Andres Soler</span>
-    </a>
-  </div>
+  <a
+    href="/"
+    class="group flex items-center space-x-2 text-[var(--accent)] hover:text-[var(--accent-glow)] transition-colors"
+  >
+    <!-- Inline SVG -->
+    <span
+      class="inline-flex
+             [&>svg]:w-12 [&>svg]:h-12
+             md:[&>svg]:w-16 md:[&>svg]:h-16
+             lg:[&>svg]:w-18 lg:[&>svg]:h-18
+             fill-current"
+      set:html={Terminal}
+      aria-hidden="true"
+    />
+
+    <span class="text-[16px] md:text-3xl lg:text-[48px] font-bold">
+      Andres Soler
+    </span>
+  </a>
+</div>
