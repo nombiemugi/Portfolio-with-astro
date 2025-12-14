@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+import '../styles/tokens.css';
+const pageTitle = "Contact";
+
+
+const pageDescription = "Get in Touch with me. I'm always open to discussing new projects, collaboration opportunities, or simply sharing insights. Whether you have a challenging idea or just want to say hello, I'd love to hear from you. You can connect with me through the channels below:";
+const continueText = "Alternatively, please feel free to use the contact form provided below. I look forward to connecting with you!";
+
+---
+
+<Layout 
+  pageTitle={pageTitle}
+  pageDescription={pageDescription}
+>
+            <section class="m-10">
+                <div
+                    class="
+                    mx-auto
+                    px-4 sm:px-6
+                    lg:max-w-6/8
+                    "
+                    >
+                <div class="group bg-[var(--color90-lowcontrast)] rounded-2xl border border-border p-6 sm:p-8 space-y-6 transition hover:shadow-[0_0_10px_var(--accent)]">
+
+                    <h1 class="text-2xl sm:text-3xl font-bold text-[var(--accent)] tracking-tight">
+                    Contact
+                    </h1>
+                    <p>
+                        {pageDescription}
+                        <ul>
+                            <li>
+                                <a href="https://www.linkedin.com/in/andres-jason-hernandez/" class="text-[var(--accent)] hover:underline"><strong>LinkedIn</strong> </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/andres-jason-hernandez/" class="text-[var(--accent)] hover:underline"><strong>GitHub</strong> </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/andres-jason-hernandez/" class="text-[var(--accent)] hover:underline"><strong>E-Mail</strong> </a>
+                            </li>
+                        </ul>
+                        {continueText}
+                    </p>
+
+                    <form class="mt-2 space-y-5">
+
+                    <!-- Name -->
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm font-medium text-muted-foreground">
+                        Name
+                        </label>
+                        <input
+                        type="text"
+                        name="name"
+                        required
+                        class="w-full rounded-lg border border-border bg-[var(--color90)] px-4 py-2 text-sm
+                                text-foreground placeholder:text-muted-foreground
+                                focus:outline-none focus:ring-2 focus:ring-[var(--accent)]
+                                transition"
+                        placeholder="Your name"
+                        />
+                    </div>
+
+                    <!-- Email -->
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm font-medium text-muted-foreground">
+                        Email
+                        </label>
+                        <input
+                        type="email"
+                        name="email"
+                        required
+                        class="w-full rounded-lg border border-border bg-[var(--color90)] px-4 py-2 text-sm
+                                text-foreground placeholder:text-muted-foreground
+                                focus:outline-none focus:ring-2 focus:ring-[var(--accent)]
+                                transition"
+                        placeholder="you@email.com"
+                        />
+                    </div>
+
+                    <!-- Message -->
+                    <div class="flex flex-col gap-1">
+                        <label class="text-sm font-medium text-muted-foreground">
+                        Message
+                        </label>
+                        <textarea
+                        name="message"
+                        required
+                        rows="4"
+                        class="w-full resize-none rounded-lg border border-border bg-[var(--color90)] px-4 py-2 text-sm
+                                text-foreground placeholder:text-muted-foreground
+                                focus:outline-none focus:ring-2 focus:ring-[var(--accent)]
+                                transition"
+                        placeholder="Tell me about your project..."
+                        ></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <button
+                        type="submit"
+                        class="w-full rounded-lg bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-black
+                            transition-all hover:bg-[var(--accent-glow)]
+                            focus:outline-none focus:ring-2 focus:ring-[var(--accent)]
+                            active:scale-[0.98]"
+                    >
+                        Submit
+                    </button>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+</Layout />
