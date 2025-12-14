@@ -2,15 +2,18 @@
 import '../styles/global.css';
 import Home from '../components/Home.astro';
 import Navigation from '../components/Navigation.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
 import Hamburger from '../assets/svg/hamburguer.svg';
 import Quit from '../assets/svg/quit.svg';
 import Socials from '../components/Socials.astro';
 import Switch from './Switch.astro';
 ---
 
-<header class="mt-2 gap-10 ">
-  <nav class="flex items-center justify-around gap-0.5 ">
+<header class="sticky top-0 z-50 mt-2 gap-10
+              bg-(var[--color90])
+              backdrop-blur-md
+              supports-[backdrop-filter]:bg-(var[--color90]) ">
+<nav class="flex items-center justify-around gap-0.5
+            border-b border-white/10">
     <div class="menu-header">
       <Home />
     </div>
@@ -55,13 +58,15 @@ import Switch from './Switch.astro';
       <li>
         <a href="/about" class="hover:text-[var(--accent)]">About</a>
       </li>
+      <li>
+        <a href="/contact" class="hover:text-[var(--accent)]">Contact</a>
+      </li>
         <br>
-          <br>
     </ul>
   
     <ul class="flex flex-col justify-start pl-5 gap-4 font-medium tracking-[var(--tracking-tightest)] w-auto">
       <li>
-        <h1 class="transform translate-x-0 translate-y-3 color text-amber-50">Socials</h1>
+        <h1 class="transform translate-x-0 translate-y-1 color text-amber-50">Socials</h1>
         <Socials />
       </li>
     </ul>
