@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: Fullstack API Url shortener
 description: Application that creates and manages shortened Url's
 date: "2025-04-30"

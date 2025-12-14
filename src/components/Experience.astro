@@ -1,0 +1,70 @@
+---
+// 1. Recibe el array completo de experiencias
+const { experiences } = Astro.props; 
+
+// 2. 🎯 ORDENAMIENTO: Ordena de la fecha más reciente a la más antigua.
+//    Si endDate es undefined (trabajo actual), se le asigna Infinity 
+//    para que sea el valor más grande y aparezca primero.
+const sortedExperiences = experiences.sort((a, b) => {
+    const dateB = b.data.endDate ?? Infinity; // Si es undefined, usa Infinity
+    const dateA = a.data.endDate ?? Infinity; // Si es undefined, usa Infinity 
+    // Resta b - a para orden descendente (mayor a menor)
+    return dateB - dateA;
+});
+
+
+// 3. Procesa el array ordenado para obtener el componente de contenido
+const experiencesToRender = await Promise.all(
+    sortedExperiences.map(async (item) => {
+        const { Content } = await item.render(); 
+        return { ...item, Content }; 
+    })
+);
+
+
+const locationStyles = {
+  Remote: "bg-emerald-500/10 text-emerald-600 border border-emerald-500/20",
+  Onsite: "bg-blue-500/10 text-blue-600 border border-blue-500/20",
+  Hybrid: "bg-pink-500/10 text-pink-600 border border-pink-500/20",
+};
+---
+<section class="mt-10 space-y-6 mx-8 sm:mx-10 lg:mx-50">
+    <div class="space-y-4">
+        {experiencesToRender.map((item) =>( 
+            <div class="group bg-[var(--color90-lowcontrast)] rounded-2xl border border-border p-6 space-y-3 transition hover:shadow-[0_0_10px_var(--accent)]">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-lg font-semibold text-[var(--accent)] transition-colors duration-300 group-hover:text-[var(--accent-glow)]">{item.data.title}</h3>
+                            <p class=" text-sm font-bold text-muted-foreground flex items-center gap-2">
+                            {item.data.company}
+
+                            <span
+                                class={`text-xs font-medium rounded-full px-2 py-0.5 ${
+                                locationStyles[item.data.location] ??
+                                "bg-muted text-muted-foreground border border-border"
+                                }`}
+                            >
+                                {item.data.location}
+                            </span>
+                            </p>
+                    </div>
+                    <span class="text-xs text-muted-foreground">
+                        {item.data.startDate} - {item.data.endDate || 'Present'}
+                    </span>
+                </div>
+
+                <div class="prose prose-sm dark:prose-invert">
+                    <item.Content /> 
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                    {item.data.technologies.map((tech) => (
+                        <span class="text-xs rounded-md bg-accent px-2 py-1 bg-[var(--color90)]">
+                            {tech}
+                        </span>
+                    ))}
+                </div>
+            </div>
+        ))}
+    </div>
+</section>

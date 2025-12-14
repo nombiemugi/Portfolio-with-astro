@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
 title: URL Shortener
 description: An application that shortens URL.
 date: "2025-04-07"

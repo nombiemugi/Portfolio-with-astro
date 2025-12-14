@@ -2,6 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import "../styles/global.css";
 
+import { getCollection } from 'astro:content';
+import ExperienceSection from '../components/Experience.astro';
+// 🎯 CLAVE 1: Obtener la data aquí
+const experiences = await getCollection('experience');
+
+
 const pageTitle = "About me";
 const pageDescription = "Creative Web Developer & Marketing Specialist based in Bogotá, Colombia. Explore my portfolio and skills.";
 ---
@@ -14,7 +20,7 @@ const pageDescription = "Creative Web Developer & Marketing Specialist based in 
 	<div class="parent">
 		<div class="div1 text-center mt-5">
 			<h1 class="text-[30px] md:text-[50px] lg:text-[70px] xl:text-[96px] leading-[1] font-bold tracking-(--tracking-tightest)">
-				About me 
+				About me
 			</h1>
 			<p class="text-[12px] md:text-[18px] lg:text-[25px] leading-[1] font-extralight tracking-(--tracking-1) mt-5 mb-5 ">
 				Thanks for stopping by. Read below to learn more about myself and my background.
@@ -26,7 +32,7 @@ const pageDescription = "Creative Web Developer & Marketing Specialist based in 
 		</div>
 		<div class="div3">
 			<p class="text-[12px] md:text-[18px] lg:text-[25px] font-light tracking-(--tracking-tight)"> 
-			I am a 27-year-old software developer currently residing in Bogotá, Colombia. I hold a Bachelor's degree in Philology with a focus on German, graduated in 2021. Additionally, I possess several programming certifications.
+			I am a 28-year-old software developer currently residing in Bogotá, Colombia. I hold a Bachelor's degree in Philology with a focus on German, graduated in 2021. Additionally, I possess several programming certifications.
 			My expertise lies in German language and cultural knowledge, complemented by a strong background in design, marketing and programming, acquired through my recent professional experiences.
 		</p>
 		</div>
@@ -45,9 +51,17 @@ const pageDescription = "Creative Web Developer & Marketing Specialist based in 
 				I possess programming skills in both front-end and back-end languages. Furthermore, I am proficient in design applications for creating websites and web applications. My soft skills include teamwork, self-motivated learning, empathy, versatility, and assertive communication.</div>
 			</p>
 		</div>
-		</div> 
+		</div>
+
+		<div class="mt-10 space-y-6 mx-8 sm:mx-10 lg:mx-50">
+			<h2 class="text-[20px] md:text-[30px] lg:text-[40px] font-bold tracking-tight text-[var(--accent)]">Work Experience</h2>	
+		</div>
+			<ExperienceSection experiences={experiences} />
+
 
 </Layout> 
+
+
 
 
 <style>
