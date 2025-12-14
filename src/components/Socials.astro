@@ -1,17 +1,64 @@
 ---
-import X from "../assets/svg/x.svg";
-import Github from "../assets/svg/github.svg";
-import Instagram from "../assets/svg/instagram.svg";
-import Linkedin from "../assets/svg/linkedin.svg";
-import Youtube from "../assets/svg/youtube.svg";
-import "../styles/global.css";
-
+import Github from "../assets/svg/github.svg?raw";
+import Linkedin from "../assets/svg/linkedin.svg?raw";
+import Instagram from "../assets/svg/instagram.svg?raw";
+import X from "../assets/svg/x.svg?raw";
+import Youtube from "../assets/svg/youtube.svg?raw";
 ---
 
-  <li class="flex items-center justify-items-end gap-3">
-    <a href="https://github.com/nombiemugi" target="_blank"><Github /></a>
-    <a href="https://www.linkedin.com/in/andres-soler-dev/" target="_blank"><Linkedin /></a>
-    <a href="https://www.instagram.com/uhndrew/" target="_blank"><Instagram /></a>
-    <a href="https://x.com" target="_blank"><X /></a>
-    <a href="https://www.youtube.com/channel/UC5jX6G5SyuAPAjWhp3gpIwg" target="_blank"><Youtube /></a>
+<ul class="flex items-center gap-3">
+  <li>
+    <a
+      href="https://github.com/nombiemugi"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group inline-flex text-[var(--accent)] hover:text-[var(--accent-glow)] transition-colors"
+      aria-label="GitHub"
+      set:html={Github}
+    />
   </li>
+
+  <li>
+    <a
+      href="https://www.linkedin.com/in/andres-soler-dev/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group inline-flex text-[var(--accent)] hover:text-[var(--accent-glow)] transition-colors"
+      aria-label="LinkedIn"
+      set:html={Linkedin}
+    />
+  </li>
+
+  <li>
+    <a
+      href="https://www.instagram.com/uhndrew/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group inline-flex text-[var(--accent)] hover:text-[var(--accent-glow)] transition-colors"
+      aria-label="Instagram"
+      set:html={Instagram}
+    />
+  </li>
+
+  <li>
+    <a
+      href="https://x.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group inline-flex text-[var(--accent)] hover:text-[var(--accent-glow)] transition-colors"
+      aria-label="X / Twitter"
+      set:html={X}
+    />
+  </li>
+
+  <li>
+    <a
+      href="https://www.youtube.com/channel/UC5jX6G5SyuAPAjWhp3gpIwg"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group inline-flex text-[var(--accent)] hover:text-[var(--accent-glow)] transition-colors"
+      aria-label="YouTube"
+      set:html={Youtube}
+    />
+  </li>
+</ul>
