@@ -1,10 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import '../styles/global.css';
-import '../styles/tokens.css';
-const pageTitle = "Contact";
-
-
+const pageTitle = "Contact me";
 const pageDescription = "Get in Touch with me. I'm always open to discussing new projects, collaboration opportunities, or simply sharing insights. Whether you have a challenging idea or just want to say hello, I'd love to hear from you. You can connect with me through the channels below:";
 const continueText = "Alternatively, please feel free to use the contact form provided below. I look forward to connecting with you!";
 
@@ -29,21 +26,41 @@ const continueText = "Alternatively, please feel free to use the contact form pr
                     </h1>
                     <p>
                         {pageDescription}
-                        <ul>
+                        <ul class="flex space-x-4">
                             <li>
-                                <a href="https://www.linkedin.com/in/andres-jason-hernandez/" class="text-[var(--accent)] hover:underline"><strong>LinkedIn</strong> </a>
+                                <a href="https://www.linkedin.com/in/andres-soler-dev/" target="_blank" class="text-[var(--accent)] hover:underline"><strong>LinkedIn</strong> </a>
                             </li>
                             <li>
-                                <a href="https://www.linkedin.com/in/andres-jason-hernandez/" class="text-[var(--accent)] hover:underline"><strong>GitHub</strong> </a>
+                                <a href="https://github.com/nombiemugi" target="_blank" class="text-[var(--accent)] hover:underline"><strong>GitHub</strong> </a>
                             </li>
                             <li>
-                                <a href="https://www.linkedin.com/in/andres-jason-hernandez/" class="text-[var(--accent)] hover:underline"><strong>E-Mail</strong> </a>
+                                <a href="mailto:andressolerdev@gmail.com" target="_blank" class="text-[var(--accent)] hover:underline"><strong>E-Mail</strong> </a>
                             </li>
                         </ul>
                         {continueText}
                     </p>
 
-                    <form class="mt-2 space-y-5">
+
+
+                    <!-- CONTACT FORM STARTS HERE 😭 -->
+
+                    <form
+                        id="contact-form" 
+                        class="mt-2 space-y-5"
+                        name="contact"                 
+                        method="POST"
+                        netlify-honeypot="bot-field"                 
+                        data-netlify="true"
+                        data-netlify-recaptcha="true"
+                    ">
+                      <p class="hidden">
+                            <label>
+                            Don’t fill this out if you’re human: <input name="bot-field" type="text" />
+                            </label>
+                        </p>
+                    <input type="hidden" name="form-name" value="contact" />
+    
+                    <input type="hidden" name="bot-field" />
 
                     <!-- Name -->
                     <div class="flex flex-col gap-1">
@@ -95,6 +112,8 @@ const continueText = "Alternatively, please feel free to use the contact form pr
                         placeholder="Tell me about your project..."
                         ></textarea>
                     </div>
+                    <!-- reCAPTCHA   -->
+                    <div data-netlify-recaptcha="true"></div>
 
                     <!-- Submit -->
                     <button
@@ -106,9 +125,61 @@ const continueText = "Alternatively, please feel free to use the contact form pr
                     >
                         Submit
                     </button>
+                                        <!-- FORM MESSAGE -->
+                    <div id="form-message" role="alert" aria-live="polite" class="my-4 text-center"></div>
 
                     </form>
                 </div>
             </div>
         </section>
+
+        <script>
+            // The name of the form in the Netlify dashboard
+            const formName = 'contact'; 
+            const form = document.getElementById('contact-form');
+            const messageContainer = document.getElementById('form-message');
+
+            const encode = (data) => {
+                return Object.keys(data)
+                    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+                    .join("&");
+            }
+
+            const handleSubmit = async (event) => {
+                event.preventDefault();
+                
+                // 1. Clear any existing messages
+                messageContainer.innerHTML = '';
+
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+
+                try {
+                    const response = await fetch("/", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        // Netlify requires data in this specific format for AJAX
+                        body: encode({ "form-name": formName, ...data }) 
+                    });
+
+                    if (response.ok) {
+                        // SUCCESS: Display success message and clear form
+                        messageContainer.innerHTML = '<p class="text-green-500 font-semibold">Thank you! Your message has been sent.</p>';
+                        form.reset(); 
+                    } else {
+                        // ERROR: Display failure message
+                        messageContainer.innerHTML = '<p class="text-red-500 font-semibold">Error: Could not send message. Please try again.</p>';
+                    }
+                } catch (error) {
+                    // NETWORK ERROR: Display failure message
+                    messageContainer.innerHTML = '<p class="text-red-500 font-semibold">A network error occurred. Please check your connection.</p>';
+                }
+            };
+
+            // Attach the handler to the form
+            form.addEventListener("submit", handleSubmit);
+        </script>
+
+
 </Layout />
+
