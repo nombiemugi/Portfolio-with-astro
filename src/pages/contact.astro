@@ -25,7 +25,7 @@ const continueText = "Alternatively, please feel free to use the contact form pr
                     Contact
                     </h1>
                     <p>
-                        {pageDescription}
+                        {pageDescription} </p>
                         <ul class="flex space-x-4">
                             <li>
                                 <a href="https://www.linkedin.com/in/andres-soler-dev/" target="_blank" class="text-[var(--accent)] hover:underline"><strong>LinkedIn</strong> </a>
@@ -37,7 +37,7 @@ const continueText = "Alternatively, please feel free to use the contact form pr
                                 <a href="mailto:andressolerdev@gmail.com" target="_blank" class="text-[var(--accent)] hover:underline"><strong>E-Mail</strong> </a>
                             </li>
                         </ul>
-                        {continueText}
+                        <p>{continueText}
                     </p>
 
 
@@ -52,7 +52,7 @@ const continueText = "Alternatively, please feel free to use the contact form pr
                         netlify-honeypot="bot-field"                 
                         data-netlify="true"
                         data-netlify-recaptcha="true"
-                    ">
+                    >
                       <p class="hidden">
                             <label>
                             Don’t fill this out if you’re human: <input name="bot-field" type="text" />
@@ -179,7 +179,4 @@ const continueText = "Alternatively, please feel free to use the contact form pr
             // Attach the handler to the form
             form.addEventListener("submit", handleSubmit);
         </script>
-
-
-</Layout />
 

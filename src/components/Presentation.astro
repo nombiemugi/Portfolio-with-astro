@@ -1,8 +1,9 @@
----
+opi---
 import '../styles/global.css';
 import Slash from "../assets/svg/slash.svg";
 import Palette from "../assets/svg/palette.svg";
 import Translate from "../assets/svg/translate.svg";
+import Cv from "../assets/svg/cv.svg";
 
 
 ---
@@ -25,20 +26,24 @@ import Translate from "../assets/svg/translate.svg";
               </h1>
             <p class="text-[15px] lg:text-[30px] xl:text-[40px] mb-6-xl mb-0 ">Creative Web Developer<br>
                 based in Bogotá, Colombia.</p>
-                <div class="hidden xl:flex flex-col lg:flex-row gap-1 text-[18px] lg:text-[36px] font-bold">
+                <div class="mt-8 hidden xl:flex flex-col lg:flex-row gap-1 text-[18px] lg:text-[36px] font-bold">
                     <span class="bg-[var(--accent)] text-[var(--color100)] px-8 py-3 rounded-full min-w-[268px] min-h-[77px] flex items-center justify-center gap-4"><Slash />Developer</span>
                     <span class="bg-[var(--accent)] text-[var(--color100)] px-8 py-3 rounded-full min-w-[268px] min-h-[77px] flex items-center justify-center gap-4"><Palette />Designer</span>
                     <span class="bg-[var(--accent)] text-[var(--color100)] px-8 py-3 rounded-full min-w-[268px] min-h-[77px] flex items-center justify-center gap-4"><Translate />Polyglot</span>
                 </div>
-            <div class="flex flex-row sm:flex-row justify-center xl:justify-start gap-4 mt-2">
+
+           <!-- download button -->     
+        <div class="flex flex-row sm:flex-row justify-center xl:justify-start gap-4 mt-5 text-[20px] lg:text-[32px] font-bold">
             <a
             href="/HvTmpEnglish.pdf"
             download="HvTmpEnglish.pdf"
-            class="px-8 py-3 rounded-full bg-[var(--accent)] text-white shadow hover:bg-black hover:text-white transition text-lg font-bold flex items-center justify-center"
+            class="bg-[var(--accent)] text-[var(--color100)] hover:shadow-[0_0_20px_var(--accent)] hover:bg-[var(--accent-glow)] px-4 py-2 lg:px-6 lg:py-3 rounded-full min-w-[210px] min-h-[48px] lg:min-w-[268px] lg:min-h-[77px] flex items-center justify-center gap-3 lg:gap-4 block transform transition duration-300 hover:scale-105"
             >
-            ⬇️ Download CV
+            <Cv /> Resume    
             </a>
         </div>
+
+        <!-- image -->
         </div>
         <div class="hidden md:block w-1/2 md:w-1/2 lg:w-1/3 rounded-full overflow-hidden">
             <img src="../Me-squared1.webp" alt="Andres Soler" class="w-full h-full object-cover">
