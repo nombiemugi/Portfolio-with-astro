@@ -48,9 +48,19 @@ const locationStyles = {
                             </span>
                             </p>
                     </div>
-                    <span class="text-xs text-muted-foreground">
-                        {item.data.startDate} - {item.data.endDate || 'Present'}
-                    </span>
+                        <span class="text-xs text-muted-foreground">
+                        {
+                            // Check if the start date and end date are the same
+                            item.data.startDate === item.data.endDate
+                            // If they are the same, display only the start date
+                            ? item.data.startDate
+                            // If they are different:
+                            // show a range "startDate - endDate"
+                            // if endDate is missing (null/undefined/empty),
+                            // fallback to the text "Present"
+                            : `${item.data.startDate} - ${item.data.endDate || 'Present'}`
+                        }
+                        </span>
                 </div>
 
                 <div class="prose prose-sm dark:prose-invert">
