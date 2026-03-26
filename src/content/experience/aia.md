@@ -8,6 +8,9 @@ technologies:
   - Php
   - WordPress
   - JavaScript
+  - SEO
+  - Digital Marketing
+  - Page and product optimization
 ---
 
 I worked as a System Support / Web Developer, assisting with all the different layers of website production for law firms. This included frontend development, backend development, SEO updates, testing, and performance analysis.

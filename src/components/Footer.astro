@@ -1,6 +1,7 @@
 --- 
 import ThemeToggle from '../components/ThemeToggle.astro'
 import "../styles/global.css";
+const year = new Date().getFullYear();
 --- 
 
 <footer class="relative w-screen pb-32 mt-7">
@@ -11,14 +12,13 @@ import "../styles/global.css";
     <div class="relative h-full flex flex-col justify-center items-center">
         <div class="p-4 flex justify-center items-center h-full w-full">
             <div class="text-center text-[var(--color10)] font-light md:font-light text-[12px] sd:text-[10px] md:text-[20px] lg:text-[24px]">
-                <p class="text-shadow-lg/20">© 2025 Andres Soler | Created in Bogota, Colombia</p> 
+                <p class="text-shadow-lg/20">© {year} Andres Soler | Created in Bogota, Colombia</p> 
                 <p class="text-shadow-lg/20">Built with love using <a class="underline hover:text-[var(--accent)]" href="https://astro.build/" target="_blank">Astro.</a>
                     Look at some of my projects on 
                     <a class="underline hover:text-[var(--accent)]" href="https://github.com/nombiemugi" target="_blank">GitHub.</a></p> 
             </div>
         </div>
     </div>
-
 
     <style>
         footer {
