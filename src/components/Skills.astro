@@ -2,21 +2,26 @@
 /* -----------------------------
    SVG Imports
 -------------------------------- */
-import HtmlIcon from "/public/images/skills/html.svg";
-import CssIcon from "/public/images/skills/css.svg";
-import JsIcon from "/public/images/skills/javascript.svg";
-import TsIcon from "/public/images/skills/typescript.svg";
-import ReactIcon from "/public/images/skills/react.svg";
-import AstroIcon from "/public/images/skills/astroIcon.svg";
-import NodeIcon from "/public/images/skills/nodejsIcon.svg";
-import GitIcon from "/public/images/skills/git.svg";
-import PythonIcon from "/public/images/skills/python.svg";
-import SqlIcon from "/public/images/skills/sql.svg";
-import FigmaIcon from "/public/images/skills/figma.svg";
-import CanvaIcon from "/public/images/skills/canva.svg";
-import AdobeIcon from "/public/images/skills/adobe.svg";
-import PhpIcon from "/public/images/skills/php.svg";
-import WordpressIcon from "/public/images/skills/wordpress.svg";
+import HtmlIcon from "../assets/svg/skills/html.svg";
+import CssIcon from "../assets/svg/skills/css.svg";
+import JsIcon from "../assets/svg/skills/javascript.svg";
+import TsIcon from "../assets/svg/skills/typescript.svg";
+import ReactIcon from "../assets/svg/skills/react.svg";
+import AstroIcon from "../assets/svg/skills/astroIcon.svg";
+import NodeIcon from "../assets/svg/skills/nodejsIcon.svg";
+import GitIcon from "../assets/svg/skills/git.svg";
+import PythonIcon from "../assets/svg/skills/python.svg";
+import SqlIcon from "../assets/svg/skills/sql.svg";
+import FigmaIcon from "../assets/svg/skills/figma.svg";
+import CanvaIcon from "../assets/svg/skills/canva.svg";
+import AdobeIcon from "../assets/svg/skills/adobe.svg";
+import PhpIcon from "../assets/svg/skills/php.svg";
+import WordpressIcon from "../assets/svg/skills/wordpress.svg";
+
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 /* -----------------------------
    Skill Registry
@@ -47,9 +52,9 @@ const skills = Object.entries(skillIcons);
 
   <!-- ✅ TITLE -->
   <div class="w-screen h-[150px] lg:h-[250px] flex items-center justify-center text-center px-4">
-    <h1 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-tighter">
-      What I work with
-    </h1>
+    <h2 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-tighter">
+      {t('skills.title')}
+    </h2>
   </div>
 
   <!-- ✅ CAROUSEL WRAPPER -->
@@ -62,9 +67,9 @@ const skills = Object.entries(skillIcons);
       {skills.map(([name, Icon]) => {
         const Svg = Icon;
         return (
-          <li class="skill-item" key={`a-${name}`}>
+          <li class="skill-item">
             <Svg class="skill-icon" />
-            <h1 class="skill">{name}</h1>
+            <span class="skill">{name}</span>
           </li>
         );
       })}
@@ -73,9 +78,9 @@ const skills = Object.entries(skillIcons);
       {skills.map(([name, Icon]) => {
         const Svg = Icon;
         return (
-          <li class="skill-item" key={`b-${name}`}>
+          <li class="skill-item" aria-hidden="true">
             <Svg class="skill-icon" />
-            <h1 class="skill">{name}</h1>
+            <span class="skill">{name}</span>
           </li>
         );
       })}
@@ -148,6 +153,16 @@ const skills = Object.entries(skillIcons);
   /* Pause on hover */
   .carousel:hover .carousel-track {
     animation-play-state: paused;
+  }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .carousel-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   /* Slight fade mask edges (optional luxury) */

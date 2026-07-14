@@ -1,0 +1,83 @@
+---
+import '../styles/global.css';
+import '../styles/tokens.css';
+import type { CollectionEntry } from 'astro:content';
+
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { slug, data } = project;
+const { title, img, description, technologies } = data;
+// Collection slugs are "en/foo" / "es/foo"; the public route drops the locale folder
+const href = localizePath(`/projects/${slug.split('/')[1]}`, lang);
+---
+
+<a
+  href={href}
+  class="block transform transition duration-300 hover:scale-105"
+>
+  <Card className="group h-full flex flex-col cursor-pointer bg-[var(--color90-lowcontrast)] text-card-foreground border rounded-xl shadow-sm hover:shadow-[0_0_20px_var(--accent)]">
+
+    <CardHeader className="p-0">
+      <CardTitle className="p-0">
+        <img
+          class="w-full h-[196px] lg:h-[220px] object-cover shrink-0 rounded-t-xl"
+          src={img}
+          alt={title}
+          loading="lazy"
+          decoding="async"
+        />
+      </CardTitle>
+    </CardHeader>
+
+    <CardContent className="px-4 flex flex-col">
+      <h3
+        class="
+          text-left
+          text-xl font-semibold leading-tight
+          text-[var(--accent)]
+          transition-colors duration-300
+          group-hover:text-[var(--accent-glow)]
+        "
+      >
+        {title}
+      </h3>
+
+      <p class="mt-2 text-sm font-medium w-full">
+        {description}
+      </p>
+    </CardContent>
+
+    <CardFooter className="flex flex-col mt-2">
+      <h4
+        class="
+          text-center
+          text-lg font-semibold mb-1
+          text-[var(--accent)]
+          transition-colors duration-300
+          group-hover:text-[var(--accent-glow)]
+        "
+      >
+        {t('projects.technologiesUsed')}
+      </h4>
+      <p class="text-center text-sm font-bold w-full">
+        {technologies.join(', ')}
+      </p>
+    </CardFooter>
+
+  </Card>
+</a>

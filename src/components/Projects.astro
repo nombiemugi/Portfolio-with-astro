@@ -2,113 +2,42 @@
 import '../styles/global.css';
 import '../styles/tokens.css';
 import { getCollection } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
 
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
-const projects = await getCollection('projects');
+const projects = await getCollection('projects', ({ slug }) => slug.startsWith(`${lang}/`));
 
-const sortedProjects = projects.sort((a, b) => {
+const sortedProjects = [...projects].sort((a, b) => {
   const orderA = Number(a.data.order ?? 999);
   const orderB = Number(b.data.order ?? 999);
   return orderA - orderB;
 });
-
-
-
-const pageTitle = "Latest projects";
 ---
 
-        <main class="">
-            <div class="mt-10 space-y-6 mx-8 sm:mx-10 lg:mx-50"> 
-                <!-- TITLE -->
-                <div class="m-16 flex items-center justify-center text-center px-4">
-                    <h1 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-tighter">
-                        {pageTitle}
-                    </h1>
-                </div>
+<div class="mt-10 space-y-6 mx-8 sm:mx-10 lg:mx-50">
+    <!-- TITLE -->
+    <div class="m-16 flex items-center justify-center text-center px-4">
+        <h2 class="text-[20px] md:text-[42px] lg:text-[64px] font-bold tracking-tighter">
+            {t('projects.latest')}
+        </h2>
+    </div>
 
-                <!-- PROJECTS GRID -->
-                <section aria-label="My projects" class="mt-10">
-                    <div class="grid gap-6 md:grid-cols-2">
-                            {sortedProjects.slice(0, 2).map(project => { // Muestra los primeros 3 proyectos (índices 0, 1, 2)
-                            // Extrae los datos
-                            const { slug, data } = project;
-                            const { title, img, description, technologies } = data;
-                            return (
-                                <a 
-                                    href={`/projects/${slug}`} 
-                                    class="block transform transition duration-300 hover:scale-105"
-                                    key={slug}
-                                >
-                                    <Card className="group h-full flex flex-col cursor-pointer bg-[var(--color90-lowcontrast)] text-card-foreground border rounded-xl shadow-sm hover:shadow-[0_0_20px_var(--accent)]">
-                                        
-                                        <CardHeader class="p-0">
-                                            <CardTitle class="p-0">
-                                                <img
-                                                    class="w-full h-[196px] lg:h-[220px] object-cover shrink-0 rounded-t-xl"
-                                                    src={img}
-                                                    alt={title}
-                                                />
-                                            </CardTitle>
-                                        </CardHeader>
-
-                                        <CardContent class="px-4 flex flex-col">
-                                            <h2 
-                                                class="
-                                                    text-left
-                                                    text-xl font-semibold leading-tight 
-                                                    text-[var(--accent)] 
-                                                    transition-colors duration-300
-                                                    group-hover:text-[var(--accent-glow)]
-                                                "
-                                            >
-                                                {title}
-                                            </h2>
-
-                                            <p class="mt-2 text-sm font-medium w-full">
-                                                {description}
-                                            </p>
-
-                                        </CardContent>
-
-
-
-
-                                        <CardFooter className="flex flex-col mt-2">
-                                            <h3 
-                                                class="
-                                                    text-center
-                                                    text-lg font-semibold mb-1 
-                                                    text-[var(--accent)] 
-                                                    transition-colors duration-300
-                                                    group-hover:text-[var(--accent-glow)]
-                                                "
-                                            >
-                                                Technologies Used:
-                                            </h3>
-                                            <p class="text-center text-sm font-bold w-full">
-                                                {technologies.join(', ')}
-                                            </p>
-                                        </CardFooter>
-
-                                    </Card>
-                                </a>
-                            )
-                        })}
-                    </div>
-                    <div class="md:col-span-2 mt-4 text-right">
-                        <a href="/projects">
-                            <p class="inline-block text-[var(--accent)]  hover:text-[var(--accent-glow)] transition-colors duration-300 font-semibold cursor-pointer"> 
-                                View all my projects here &rarr;
-                            </p>
-                        </a>
-                    </div>
-                </section>
-            </div>
-        </main>
+    <!-- PROJECTS GRID -->
+    <section aria-label={t('projects.aria')} class="mt-10">
+        <div class="grid gap-6 md:grid-cols-2">
+            {sortedProjects.slice(0, 2).map((project) => (
+                <ProjectCard project={project} />
+            ))}
+        </div>
+        <div class="md:col-span-2 mt-4 text-right">
+            <a href={localizePath('/projects', lang)}>
+                <p class="inline-block text-[var(--accent)] hover:text-[var(--accent-glow)] transition-colors duration-300 font-semibold cursor-pointer">
+                    {t('projects.viewAll')} &rarr;
+                </p>
+            </a>
+        </div>
+    </section>
+</div>

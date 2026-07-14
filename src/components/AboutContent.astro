@@ -1,0 +1,70 @@
+---
+import "../styles/global.css";
+import { getCollection } from 'astro:content';
+import ExperienceSection from './Experience.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const experiences = await getCollection('experience', ({ slug }) => slug.startsWith(`${lang}/`));
+---
+
+<div class="parent">
+	<div class="div1 text-center mt-5">
+		<h1 class="text-[30px] md:text-[50px] lg:text-[70px] xl:text-[96px] leading-[1] font-bold tracking-(--tracking-tightest)">
+			{t('about.title')}
+		</h1>
+		<p class="text-[12px] md:text-[18px] lg:text-[25px] leading-[1] font-extralight tracking-(--tracking-1) mt-5 mb-5 ">
+			{t('about.intro')}
+		</p>
+		<img class="m-auto rounded-4xl" src="/about_image1.webp" alt="Andres Soler" loading="lazy" decoding="async" >
+	</div>
+	<div class="div2">
+		<h2 class="text-[12px] md:text-[18px] lg:text-[24px] font-bold tracking-(--tracking-tight) text-[var(--accent)]">{t('about.background')}</h2>
+	</div>
+	<div class="div3">
+		<p class="text-[12px] md:text-[18px] lg:text-[25px] font-light tracking-(--tracking-tight)">
+			{t('about.background.text')}
+		</p>
+	</div>
+	<div class="div4">
+		<h2 class="text-[12px] md:text-[18px] lg:text-[24px] font-bold tracking-(--tracking-tight) text-[var(--accent)]">{t('about.education')}</h2>
+	</div>
+	<div class="div5">
+		<p class="text-[12px] md:text-[18px] lg:text-[25px] font-light tracking-(--tracking-tight)">
+			{t('about.education.text')}
+		</p>
+	</div>
+	<div class="div6">
+		<h2 class="text-[12px] md:text-[18px] lg:text-[24px] font-bold tracking-(--tracking-tight) text-[var(--accent)]">{t('about.skills')}</h2>
+	</div>
+	<div class="div7">
+		<p class="text-[12px] md:text-[18px] lg:text-[25px] font-light tracking-(--tracking-tight)">
+			{t('about.skills.text')}
+		</p>
+	</div>
+</div>
+
+<div class="mt-10 space-y-6 mx-8 sm:mx-10 lg:mx-50">
+	<h2 class="text-[20px] md:text-[30px] lg:text-[40px] font-bold tracking-tight text-[var(--accent)]">{t('experience.title')}</h2>
+</div>
+<ExperienceSection experiences={experiences} />
+
+<style>
+	.parent {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		grid-template-rows: auto auto auto auto auto auto auto;
+		grid-column-gap: 5px;
+		grid-row-gap: 10px;
+	}
+
+	.div1 { grid-area: 1 / 3 / 3 / 6; }
+	.div2 { grid-area: 3 / 2 / 4 / 3; }
+	.div3 { grid-area: 3 / 3 / 4 / 7; }
+	.div4 { grid-area: 4 / 2 / 5 / 3; }
+	.div5 { grid-area: 4 / 3 / 5 / 7; }
+	.div6 { grid-area: 5 / 2 / 6 / 3; }
+	.div7 { grid-area: 5 / 3 / 6 / 7; }
+</style>
