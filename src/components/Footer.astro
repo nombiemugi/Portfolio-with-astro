@@ -1,8 +1,11 @@
---- 
-import ThemeToggle from '../components/ThemeToggle.astro'
+---
 import "../styles/global.css";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const year = new Date().getFullYear();
---- 
+---
 
 <footer class="relative w-screen pb-32 mt-7">
     <div
@@ -12,21 +15,19 @@ const year = new Date().getFullYear();
     <div class="relative h-full flex flex-col justify-center items-center">
         <div class="p-4 flex justify-center items-center h-full w-full">
             <div class="text-center text-[var(--color10)] font-light md:font-light text-[12px] sd:text-[10px] md:text-[20px] lg:text-[24px]">
-                <p class="text-shadow-lg/20">© {year} Andres Soler | Created in Bogota, Colombia</p> 
-                <p class="text-shadow-lg/20">Built with love using <a class="underline hover:text-[var(--accent)]" href="https://astro.build/" target="_blank">Astro.</a>
-                    Look at some of my projects on 
-                    <a class="underline hover:text-[var(--accent)]" href="https://github.com/nombiemugi" target="_blank">GitHub.</a></p> 
+                <p class="text-shadow-lg/20">© {year} Andres Soler | {t('footer.copyright')}</p>
+                <p class="text-shadow-lg/20">{t('footer.built1')} <a class="underline hover:text-[var(--accent)]" href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro.</a>
+                    {t('footer.built2')}
+                    <a class="underline hover:text-[var(--accent)]" href="https://github.com/nombiemugi" target="_blank" rel="noopener noreferrer">GitHub.</a></p>
             </div>
         </div>
     </div>
+</footer>
 
-    <style>
-        footer {
-            padding: var(--spacing3);
-            background-color: var(--color90);
-            box-shadow: var(--card-shadow);
-        }
-    </style>
-
-
-
+<style>
+    footer {
+        padding: var(--spacing3);
+        background-color: var(--color90);
+        box-shadow: var(--card-shadow);
+    }
+</style>

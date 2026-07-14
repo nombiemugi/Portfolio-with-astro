@@ -1,21 +1,30 @@
 ---
-const {
-  pageTitle = "Andres Soler",
-  pageDescription = "Creative Web Developer & Marketing Specialist based in Bogotá, Colombia.",
-  pageImage = "/default-preview1.webp", // puedes subir una a /public/
-  pageUrl = "https://andressoler.netlify.app" // cambia si usas dominio propio
-} = Astro.props;
-
 import '@fontsource/onest/400.css';
 import '@fontsource/onest/700.css';
 import '../styles/global.css';
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getLangFromUrl, useTranslations, getAlternatePath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const {
+  pageTitle = t('meta.defaultTitle'),
+  pageDescription = t('meta.defaultDescription'),
+  pageImage = "/default-preview.webp",
+} = Astro.props;
+
+const site = Astro.site ?? new URL("https://andressoler.netlify.app");
+const canonicalURL = new URL(Astro.url.pathname, site);
+const alternateEn = new URL(getAlternatePath(Astro.url, 'en'), site);
+const alternateEs = new URL(getAlternatePath(Astro.url, 'es'), site);
+const socialImage = new URL(pageImage, site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,23 +34,34 @@ import Footer from '../components/Footer.astro';
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
 
+    <!-- Canonical & language alternates -->
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={alternateEn} />
+    <link rel="alternate" hreflang="es" href={alternateEs} />
+    <link rel="alternate" hreflang="x-default" href={alternateEn} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
     <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#0f172a" />
 
     <!-- Open Graph / Facebook / LinkedIn -->
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:image" content={`${pageUrl}${pageImage}`} />
-    <meta property="og:url" content={pageUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === 'es' ? 'es_CO' : 'en_US'} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
-    <meta name="twitter:image" content={`${pageUrl}${pageImage}`} />
+    <meta name="twitter:image" content={socialImage} />
 
     <script is:inline>
       (function() {
@@ -62,9 +82,6 @@ import Footer from '../components/Footer.astro';
       <slot />
     </main>
     <Footer />
-
-    <!-- Scripts -->
-
   </body>
 </html>
 

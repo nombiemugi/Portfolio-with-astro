@@ -4,33 +4,30 @@ import Terminal from "../assets/svg/terminal.svg";
 import Translate from "../assets/svg/translate.svg";
 import Book from "../assets/svg/book.svg";
 import Person from "../assets/svg/person.svg";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const cards = [
+  { Icon: Terminal, title: t('intro.fullstack.title'), text: t('intro.fullstack.text') },
+  { Icon: Book, title: t('intro.selftaught.title'), text: t('intro.selftaught.text') },
+  { Icon: Translate, title: t('intro.languages.title'), text: t('intro.languages.text') },
+  { Icon: Person, title: t('intro.softskills.title'), text: t('intro.softskills.text') },
+];
 ---
 
 <section class="flex justify-center mt-5">
     <div class="w-screen max-w-[calc(100vw_-_75px)] flex items-center justify-center rounded-lg border-2 border-[var(--color120)] drop-shadow-sm ">
-        <div class="md:flex justify-around w-full p-5"> 
-            <div class="w-auto  md:w-1/5 gap-2.5 mb-5 flex flex-col">
-                <Terminal class="w-[24px] h-[24px] md:w-[55px] md:h-[55px]" fill="var(--accent)" />
-                <h2 class="text-[20px] md:text-[30px] lg:text-[40px] leading-[1] font-bold">Full Stack</h2>
-                <span class="hidden md:inline"><br></span>
-                <p class="text-[10px] md:text-[13px] lg:text-[16px] leading-[1] font-medium mt-auto">I am proficient in both front-end and back-end technologies.</p>
-            </div>
-            <div class="w-auto md:w-1/5 gap-2.5 mb-5 flex flex-col">
-                <Book class="w-[24px] h-[24px] md:w-[55px] md:h-[55px]" fill="var(--accent)"  />
-                <h2 class="text-[20px] md:text-[30px] lg:text-[40px] leading-[1] font-bold">Self-taught</h2> <span class="hidden md:inline"><br></span>
-                <p class="text-[10px] md:text-[13px] lg:text-[16px] leading-[1] font-medium mt-auto">During college, I taught myself programming. I find satisfaction in designing well-structured information.</p>
-            </div>
-            <div class="md:w-1/5 gap-2.5 mb-5 flex flex-col">
-                <Translate class="w-[24px] h-[24px] md:w-[55px] md:h-[55px]" fill="var(--accent)" />
-                <h2 class="text-[20px] md:text-[30px] lg:text-[40px] leading-[1] font-bold">Language <span class="hidden md:inline"><br></span> proficiency</h2> 
-                <p class="text-[10px] md:text-[13px] lg:text-[16px] leading-[1] font-medium mt-auto">I am currently fluent in Spanish, English, and German, and I am eager to learn more languages.</p>
-            </div>
-            <div class="md:w-1/5 gap-2.5 mb-5 flex flex-col">
-                <Person class="w-[24px] h-[24px] md:w-[55px] md:h-[55px]" fill="var(--accent)"  />
-                <h2 class="text-[20px] md:text-[30px] lg:text-[40px] leading-[1] font-bold">Soft-skills</h2> <span class="hidden md:inline"><br></span>
-                <p class="text-[10px] md:text-[13px] lg:text-[16px] leading-[1] font-medium mt-auto">I bring empathy and a team-focused approach, and I thrive in new and challenging environments.</p>
-            </div>
+        <div class="md:flex justify-around w-full p-5">
+            {cards.map(({ Icon, title, text }) => (
+                <div class="w-auto md:w-1/5 gap-2.5 mb-5 flex flex-col">
+                    <Icon class="w-[24px] h-[24px] md:w-[55px] md:h-[55px]" fill="var(--accent)" />
+                    <h2 class="text-[20px] md:text-[30px] lg:text-[40px] leading-[1] font-bold">{title}</h2>
+                    <span class="hidden md:inline"><br></span>
+                    <p class="text-[10px] md:text-[13px] lg:text-[16px] leading-[1] font-medium mt-auto">{text}</p>
+                </div>
+            ))}
         </div>
     </div>
 </section>

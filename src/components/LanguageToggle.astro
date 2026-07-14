@@ -1,0 +1,25 @@
+---
+import FlagCO from '../assets/svg/flag-co.svg';
+import FlagUS from '../assets/svg/flag-us.svg';
+import { getLangFromUrl, getAlternatePath, useTranslations, type Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const targetLang: Lang = lang === 'en' ? 'es' : 'en';
+const href = getAlternatePath(Astro.url, targetLang);
+
+// Flag of the language you switch TO: Colombia for Spanish, USA for English
+const TargetFlag = targetLang === 'es' ? FlagCO : FlagUS;
+---
+
+<a
+  href={href}
+  aria-label={t('nav.switchLanguage')}
+  title={t('nav.switchLanguage')}
+  class="flex items-center gap-1.5 font-bold text-[14px] md:text-[18px]
+         text-[var(--accent)] hover:text-[var(--accent-glow)]
+         transform transition duration-300 hover:scale-110"
+>
+  <TargetFlag class="w-6 h-4 md:w-7 md:h-[18px] rounded-[2px] shadow-sm" />
+  <span>{targetLang.toUpperCase()}</span>
+</a>
