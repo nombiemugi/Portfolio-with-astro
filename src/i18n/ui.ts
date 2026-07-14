@@ -135,7 +135,7 @@ export const ui = {
     "hero.line1": "Hola, mi",
     "hero.line2": "nombre es",
     "hero.subtitle1": "Desarrollador web creativo",
-    "hero.subtitle2": "con base en Bogotá, Colombia.",
+    "hero.subtitle2": "residente en Bogotá, Colombia.",
     "hero.badge.developer": "Desarrollador",
     "hero.badge.designer": "Diseñador",
     "hero.badge.polyglot": "Políglota",
