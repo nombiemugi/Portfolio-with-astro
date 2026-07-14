@@ -140,7 +140,7 @@ export const ui = {
     "hero.badge.designer": "Diseñador",
     "hero.badge.polyglot": "Políglota",
     "hero.resume": "Hoja de vida",
-    "hero.cvFile": "/HvTmpSpanish.pdf",
+    "hero.cvFile": "/resume-spanish.pdf",
 
     // Introduction cards
     "intro.fullstack.title": "Full Stack",
