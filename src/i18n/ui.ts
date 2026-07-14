@@ -40,7 +40,7 @@ export const ui = {
     "hero.badge.designer": "Designer",
     "hero.badge.polyglot": "Polyglot",
     "hero.resume": "Resume",
-    "hero.cvFile": "/HvTmpEnglish.pdf",
+    "hero.cvFile": "/resume-english.pdf",
 
     // Introduction cards
     "intro.fullstack.title": "Full Stack",
