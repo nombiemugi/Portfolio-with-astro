@@ -1,11 +1,14 @@
 ---
 import '../styles/global.css';
 import Terminal from "../assets/svg/terminal.svg?raw";
+import { getLangFromUrl, localizePath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <div class="flex items-center tracking-(--tracking-tightest)">
   <a
-    href="/"
+    href={localizePath('/', lang)}
     class="group flex items-center space-x-2 text-[var(--accent)] hover:text-[var(--accent-glow)] transition-colors"
   >
     <!-- Inline SVG -->

@@ -1,0 +1,20 @@
+---
+import Translate from '../assets/svg/translate.svg';
+import { getLangFromUrl, getAlternatePath, useTranslations, type Lang } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const targetLang: Lang = lang === 'en' ? 'es' : 'en';
+const href = getAlternatePath(Astro.url, targetLang);
+---
+
+<a
+  href={href}
+  aria-label={t('nav.switchLanguage')}
+  title={t('nav.switchLanguage')}
+  class="flex items-center gap-1 font-bold text-[14px] md:text-[18px]
+         text-[var(--accent)] hover:text-[var(--accent-glow)] transition-colors"
+>
+  <Translate class="w-5 h-5 md:w-6 md:h-6" />
+  <span>{targetLang.toUpperCase()}</span>
+</a>

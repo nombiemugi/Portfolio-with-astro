@@ -1,36 +1,45 @@
 ---
-// 1. Recibe el array completo de experiencias
-const { experiences } = Astro.props; 
+import type { CollectionEntry } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
-// 2. 🎯 ORDENAMIENTO: Ordena de la fecha más reciente a la más antigua.
-//    Si endDate es undefined (trabajo actual), se le asigna Infinity 
-//    para que sea el valor más grande y aparezca primero.
-const sortedExperiences = experiences.sort((a, b) => {
-    const dateB = b.data.endDate ?? Infinity; // Si es undefined, usa Infinity
-    const dateA = a.data.endDate ?? Infinity; // Si es undefined, usa Infinity 
-    // Resta b - a para orden descendente (mayor a menor)
+interface Props {
+  experiences: CollectionEntry<'experience'>[];
+}
+
+const { experiences } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Most recent first; a missing endDate means the job is ongoing, so it sorts first
+const sortedExperiences = [...experiences].sort((a, b) => {
+    const dateB = b.data.endDate ?? Infinity;
+    const dateA = a.data.endDate ?? Infinity;
     return dateB - dateA;
 });
 
-
-// 3. Procesa el array ordenado para obtener el componente de contenido
 const experiencesToRender = await Promise.all(
     sortedExperiences.map(async (item) => {
-        const { Content } = await item.render(); 
-        return { ...item, Content }; 
+        const { Content } = await item.render();
+        return { ...item, Content };
     })
 );
-
 
 const locationStyles = {
   Remote: "bg-emerald-500/10 text-emerald-600 border border-emerald-500/20",
   Onsite: "bg-blue-500/10 text-blue-600 border border-blue-500/20",
   Hybrid: "bg-pink-500/10 text-pink-600 border border-pink-500/20",
 };
+
+// The schema stores English enum values; only the label is localized
+const locationLabels = {
+  Remote: t('experience.location.Remote'),
+  Onsite: t('experience.location.Onsite'),
+  Hybrid: t('experience.location.Hybrid'),
+};
 ---
 <section class="mt-10 space-y-6 mx-8 sm:mx-10 lg:mx-50">
     <div class="space-y-4">
-        {experiencesToRender.map((item) =>( 
+        {experiencesToRender.map((item) =>(
             <div class="group bg-[var(--color90-lowcontrast)] rounded-2xl border border-border p-6 space-y-3 transition hover:shadow-[0_0_10px_var(--accent)]">
                 <div class="flex justify-between items-start">
                     <div>
@@ -44,27 +53,21 @@ const locationStyles = {
                                 "bg-muted text-muted-foreground border border-border"
                                 }`}
                             >
-                                {item.data.location}
+                                {locationLabels[item.data.location] ?? item.data.location}
                             </span>
                             </p>
                     </div>
                         <span class="text-xs text-muted-foreground">
                         {
-                            // Check if the start date and end date are the same
                             item.data.startDate === item.data.endDate
-                            // If they are the same, display only the start date
                             ? item.data.startDate
-                            // If they are different:
-                            // show a range "startDate - endDate"
-                            // if endDate is missing (null/undefined/empty),
-                            // fallback to the text "Present"
-                            : `${item.data.startDate} - ${item.data.endDate || 'Present'}`
+                            : `${item.data.startDate} - ${item.data.endDate || t('experience.present')}`
                         }
                         </span>
                 </div>
 
                 <div class="prose prose-sm dark:prose-invert">
-                    <item.Content /> 
+                    <item.Content />
                 </div>
 
                 <div class="flex flex-wrap gap-2">

@@ -1,6 +1,5 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
-order: 998
+order: 5
 title: Fit Application
 description: Application made to count intake calories per day.
 date: "2025-04-20"
