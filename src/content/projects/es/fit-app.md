@@ -1,5 +1,4 @@
 ---
-order: 5
 title: Aplicación Fitness
 description: Aplicación para contar las calorías consumidas por día.
 date: "2025-04-20"
@@ -18,6 +17,8 @@ tags:
   - fitness
   - frontend
   - backend
+
+status: developed
 ---
 
 Esta aplicación está diseñada para **ayudar a los usuarios a alcanzar sus objetivos específicos de control de peso.** Lo logra mediante un cálculo sofisticado del consumo de calorías, adaptado al resultado que cada persona desea, con base en datos y ciencia nutricional actualizada.

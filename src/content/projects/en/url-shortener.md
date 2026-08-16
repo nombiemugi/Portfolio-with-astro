@@ -18,7 +18,7 @@ tags:
   - backend
   - API
 
-order: 4
+status: developed
 ---
 
 Develop an application that allows you to shorten the URLs of the link you place. I did it using the free Pxl API to shorten the URLs. Additionally, you can automatically copy it to the clipboard by pressing the button next to the shortened version.

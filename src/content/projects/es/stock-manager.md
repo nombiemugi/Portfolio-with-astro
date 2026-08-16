@@ -21,7 +21,7 @@ tags:
   - frontend
   - backend
 
-order: 3
+status: developed
 ---
 
 Desarrollé un sistema de gestión de acciones para **consultar, comprar, vender y visualizar acciones en tiempo real.** La aplicación incluía la creación de cuentas de usuario mediante nombre de usuario y contraseña, además de funcionalidades para modificar la información de la cuenta, consultar acciones y realizar transacciones de venta.

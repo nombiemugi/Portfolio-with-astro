@@ -18,7 +18,7 @@ tags:
   - backend
   - API
 
-order: 4
+status: developed
 ---
 
 Desarrollé una aplicación que permite acortar las URL de los enlaces que ingreses. La construí usando la API gratuita de Pxl para acortar las URL. Además, puedes copiar el resultado automáticamente al portapapeles presionando el botón junto a la versión acortada.

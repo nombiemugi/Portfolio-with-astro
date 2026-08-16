@@ -20,10 +20,21 @@ const { project } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { slug, data } = project;
-const { title, img, description, technologies } = data;
-// Collection slugs are "en/foo" / "es/foo"; the public route drops the locale folder
-const href = localizePath(`/projects/${slug.split('/')[1]}`, lang);
+const { id, data } = project;
+const { title, img, description, technologies, status } = data;
+// Collection ids are "en/foo" / "es/foo"; the public route drops the locale folder
+const href = localizePath(`/projects/${id.split('/')[1]}`, lang);
+
+// The schema stores English enum values; only the label is localized
+const statusStyles = {
+  developed: "bg-emerald-500/10 text-emerald-600 border border-emerald-500/20",
+  "in-development": "bg-amber-500/10 text-amber-600 border border-amber-500/20",
+};
+
+const statusLabels = {
+  developed: t('projects.status.developed'),
+  "in-development": t('projects.status.in-development'),
+};
 ---
 
 <a
@@ -45,17 +56,28 @@ const href = localizePath(`/projects/${slug.split('/')[1]}`, lang);
     </CardHeader>
 
     <CardContent className="px-4 flex flex-col">
-      <h3
-        class="
-          text-left
-          text-xl font-semibold leading-tight
-          text-[var(--accent)]
-          transition-colors duration-300
-          group-hover:text-[var(--accent-glow)]
-        "
-      >
-        {title}
-      </h3>
+      <div class="flex items-center justify-between gap-2">
+        <h3
+          class="
+            text-left
+            text-xl font-semibold leading-tight
+            text-[var(--accent)]
+            transition-colors duration-300
+            group-hover:text-[var(--accent-glow)]
+          "
+        >
+          {title}
+        </h3>
+
+        <span
+          class={`shrink-0 text-xs font-medium rounded-full px-2 py-0.5 ${
+            statusStyles[status] ??
+            "bg-muted text-muted-foreground border border-border"
+          }`}
+        >
+          {statusLabels[status] ?? status}
+        </span>
+      </div>
 
       <p class="mt-2 text-sm font-medium w-full">
         {description}

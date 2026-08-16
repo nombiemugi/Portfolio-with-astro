@@ -1,5 +1,4 @@
 ---
-order: 5
 title: Fit Application
 description: Application made to count intake calories per day.
 date: "2025-04-20"
@@ -18,6 +17,8 @@ tags:
   - fitness
   - frontend
   - backend
+
+status: developed
 ---
 
 This application is meticulously designed to **empower users in their pursuit of specific weight management objectives.** It achieves this by employing a sophisticated calorie consumption calculation tailored to each individual's desired outcome, drawing upon a robust foundation of up-to-date nutritional science and data.

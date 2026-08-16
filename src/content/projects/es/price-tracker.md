@@ -1,5 +1,4 @@
 ---
-order: 1
 title: Rastreador de Precios
 description: Aplicación que extrae datos de comercios electrónicos y detecta cambios en sus precios.
 date: "2026-01-04"
@@ -19,6 +18,8 @@ tags:
   - Backend
   - MicroSaaS
   - SaaS
+
+status: developed
 ---
 
 Rastreador de Precios es una aplicación web inteligente que ayuda a los usuarios a no perderse nunca un cambio de precio. Solo pega el enlace de un producto y la aplicación usa Firecrawl para extraer de forma inteligente los datos clave del producto. Toda la información se almacena de forma segura en Supabase (PostgreSQL), donde el sistema monitorea continuamente las fluctuaciones de precios. Cuando se detecta un cambio, el usuario recibe una alerta instantánea por correo electrónico, lo que le permite actuar en el momento perfecto.

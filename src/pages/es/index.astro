@@ -12,7 +12,7 @@ import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const experiences = await getCollection('experience', ({ slug }) => slug.startsWith(`${lang}/`));
+const experiences = await getCollection('experience', ({ id }) => id.startsWith(`${lang}/`));
 ---
 <Layout
   pageTitle={t('meta.home.title')}
