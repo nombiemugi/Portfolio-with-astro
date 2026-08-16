@@ -21,7 +21,7 @@ tags:
   - frontend
   - backend
 
-order: 3
+status: developed
 ---
 
 Developed a stock management system for **real-time stock inquiry, purchase, sale, and display.** The application included user account creation through username and password setup. It also featured functionalities for account information modification, stock inquiries, and sales transactions.

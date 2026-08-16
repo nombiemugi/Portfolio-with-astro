@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface Props {
@@ -19,7 +20,7 @@ const sortedExperiences = [...experiences].sort((a, b) => {
 
 const experiencesToRender = await Promise.all(
     sortedExperiences.map(async (item) => {
-        const { Content } = await item.render();
+        const { Content } = await render(item);
         return { ...item, Content };
     })
 );

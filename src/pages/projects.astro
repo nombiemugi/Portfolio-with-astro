@@ -10,13 +10,11 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const projects = await getCollection('projects', ({ slug }) => slug.startsWith(`${lang}/`));
+const projects = await getCollection('projects', ({ id }) => id.startsWith(`${lang}/`));
 
-const sortedProjects = [...projects].sort((a, b) => {
-  const orderA = Number(a.data.order ?? 999);
-  const orderB = Number(b.data.order ?? 999);
-  return orderA - orderB;
-});
+const sortedProjects = [...projects].sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
 ---
 
 <Layout

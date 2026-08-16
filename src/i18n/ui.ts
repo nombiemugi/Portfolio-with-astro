@@ -66,6 +66,8 @@ export const ui = {
     "projects.title": "Projects",
     "projects.aria": "My projects",
     "projects.technologies": "Technologies:",
+    "projects.status.developed": "Developed",
+    "projects.status.in-development": "In development",
 
     // Experience
     "experience.title": "Work Experience",
@@ -166,6 +168,8 @@ export const ui = {
     "projects.title": "Proyectos",
     "projects.aria": "Mis proyectos",
     "projects.technologies": "Tecnologías:",
+    "projects.status.developed": "Desarrollado",
+    "projects.status.in-development": "En desarrollo",
 
     // Experience
     "experience.title": "Experiencia laboral",

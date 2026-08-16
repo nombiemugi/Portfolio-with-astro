@@ -20,7 +20,7 @@ tags:
   - backend
   - fullstack
 
-order: 2
+status: developed
 ---
 
 La aplicación alojada en <a href="https://mugiurl.netlify.app/" target="_blank" rel="noopener noreferrer" class="hover:text-[var(--accent)] underline">**este sitio web**</a> es una herramienta web diseñada para facilitar el acortamiento de URLs. Desarrollada con la herramienta de construcción Vite junto con la librería de JavaScript React, la aplicación ofrece una experiencia de usuario ágil y eficiente para generar enlaces compactos y fáciles de compartir.

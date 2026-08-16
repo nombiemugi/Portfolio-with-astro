@@ -20,7 +20,7 @@ tags:
   - backend
   - fullstack
 
-order: 2
+status: developed
 ---
 
 The application hosted at <a href="https://mugiurl.netlify.app/" target="blank" class="hover:text-[var(--accent)] underline">**this website**</a> is a web-based tool designed to facilitate the shortening of URLs. Developed using the Vite build tool in conjunction with the React JavaScript library, the application offers a streamlined and efficient user experience for generating compact, shareable links.​
