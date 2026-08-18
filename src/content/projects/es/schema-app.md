@@ -3,7 +3,7 @@ title: Schema App
 description: Una aplicación web autoalojada con Next.js 14 + Prisma/SQLite para generar y publicar JSON-LD de Schema.org en sitios de WordPress de clientes.
 date: "2026-06-29"
 img: "/schema-app-image.webp"
-url: "https://almotillegalads.com"
+url: "https://almostillegalads.com"
 author: Andres Soler
 
 technologies:

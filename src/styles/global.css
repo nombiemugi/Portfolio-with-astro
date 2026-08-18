@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./tokens.css";
 
 
  /* global variables */
@@ -78,6 +79,16 @@ body {
 }
 
 @theme {
+  /* Exposes the semantic aliases from tokens.css as Tailwind color utilities
+     (border-border, bg-muted, text-card-foreground, ...). Without these the
+     classes are parsed but no CSS is generated. */
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
   --tracking-tightest: -0.08em;
   --tracking-tighter: -0.05em;
   --tracking-tight: -0.025em;

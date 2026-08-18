@@ -13,7 +13,17 @@ export default defineConfig({
       prefixDefaultLocale: false,
     },
   },
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    // Emits <xhtml:link rel="alternate" hreflang> entries per URL so the
+    // sitemap advertises both locales, matching the tags in Layout.astro.
+    sitemap({
+      i18n: {
+        defaultLocale: "en",
+        locales: { en: "en", es: "es" },
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,22 +1,14 @@
 ---
-import "../styles/global.css";
-import { getLangFromUrl, useTranslations, localizePath } from "../i18n/utils";
+import NavLink from "./NavLink.astro";
+import { getNavLinks } from "../i18n/utils";
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-
-const navLinks = [
-  { href: localizePath('/', lang), label: t('nav.home') },
-  { href: localizePath('/projects', lang), label: t('nav.projects') },
-  { href: localizePath('/about', lang), label: t('nav.about') },
-  { href: localizePath('/contact', lang), label: t('nav.contact') },
-];
+const navLinks = getNavLinks(Astro.url);
 ---
 
   <ul class="hidden sm:flex m-0 gap-[10px] items-center text-[12px] md:text-[16px] lg:text-[24px] font-medium tracking-(--tracking-tightest)">
-    <li>
-      {navLinks.map((link) => (
-        <a href={link.href} class="hover:text-[var(--accent)] pr-4">{link.label}</a>
-      ))}
-    </li>
+    {navLinks.map((link) => (
+      <li>
+        <NavLink link={link} class="pr-4" />
+      </li>
+    ))}
   </ul>

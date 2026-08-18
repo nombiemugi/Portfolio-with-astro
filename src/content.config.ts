@@ -10,9 +10,11 @@ const projects = defineCollection({
         date: z.string(),
         img: z.string(),
         url: z.string(),
-        author: z.string(),
         technologies: z.array(z.string()),
-        tags: z.array(z.string()),
+        // Not rendered anywhere today, so they stay optional rather than
+        // forcing every entry to carry dead frontmatter.
+        author: z.string().optional(),
+        tags: z.array(z.string()).optional(),
         status: z.enum(["developed", "in-development"]),
     })
 });

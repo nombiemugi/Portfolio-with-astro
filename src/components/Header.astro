@@ -7,33 +7,33 @@ import Quit from '../assets/svg/quit.svg';
 import Socials from '../components/Socials.astro';
 import Switch from './Switch.astro';
 import LanguageToggle from './LanguageToggle.astro';
-import { getLangFromUrl, useTranslations, localizePath } from '../i18n/utils';
+import NavLink from './NavLink.astro';
+import { getLangFromUrl, useTranslations, getNavLinks } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const navLinks = [
-  { href: localizePath('/', lang), label: t('nav.home') },
-  { href: localizePath('/projects', lang), label: t('nav.projects') },
-  { href: localizePath('/about', lang), label: t('nav.about') },
-  { href: localizePath('/contact', lang), label: t('nav.contact') },
-];
+const navLinks = getNavLinks(Astro.url);
 ---
 
 <header class="sticky top-0 z-50 mt-2 gap-10
               bg-[var(--color90)]/70
               backdrop-blur-md
-              supports-[backdrop-filter]:bg-[var(--color90)]/70">
+              supports-[backdrop-filter]:bg-[var(--color90)]/70
+              ">
 <nav class="flex items-center justify-around gap-0.5
-            border-b border-white/10">
-    <div class="menu-header">
+            border-b border-white/10
+            ">
+    <div class="menu-header
+    transform transition duration-300 hover:scale-105">
       <Home />
     </div>
 
     <Navigation />
 
-    <div class="flex items-center gap-5">
-      <div class="hidden sm:block">
+    <div class="flex items-center gap-5
+    transform transition duration-300 hover:scale-102">
+      <div class="hidden sm:block ">
         <Socials />
       </div>
 
@@ -55,7 +55,7 @@ const navLinks = [
 
     <ul class="flex flex-col justify-start pl-5 gap-4 font-medium tracking-[var(--tracking-tightest)] w-auto text-white">
       <li class="flex items-center justify-between">
-        <a href={navLinks[0].href} class="hover:text-[var(--accent)]">{navLinks[0].label}</a>
+        <NavLink link={navLinks[0]} />
         <button
           id="quitButton"
           aria-label={t('nav.closeMenu')}
@@ -67,7 +67,7 @@ const navLinks = [
 
       {navLinks.slice(1).map((link) => (
         <li>
-          <a href={link.href} class="hover:text-[var(--accent)]">{link.label}</a>
+          <NavLink link={link} />
         </li>
       ))}
         <br>

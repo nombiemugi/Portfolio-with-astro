@@ -1,0 +1,33 @@
+---
+import type { NavLink } from '../i18n/utils';
+
+interface Props {
+  link: NavLink;
+  class?: string;
+}
+
+const { link, class: className } = Astro.props;
+---
+
+{link.isCurrent ? (
+  /* A <span> instead of a styled <a>: with no href it is neither clickable nor
+     focusable, so the current page can't become a tab stop that leads nowhere. */
+  <span
+    aria-current="page"
+    class:list={["text-[var(--accent)] cursor-default", className]}
+  >
+    {link.label}
+  </span>
+) : (
+  <a
+    href={link.href}
+    class:list={[
+      "hover:text-[var(--accent)]",
+      // Ancestor of the current page (a project detail): lit, but still navigable.
+      link.isInSection && "text-[var(--accent)]",
+      className,
+    ]}
+  >
+    {link.label}
+  </a>
+)}

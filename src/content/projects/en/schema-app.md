@@ -3,7 +3,7 @@ title: Schema App
 description: A self-hosted Next.js 14 + Prisma/SQLite web app for generating and publishing Schema.org JSON-LD to client WordPress sites.
 date: "2026-06-29"
 img: "/schema-app-image.webp"
-url: "https://almotillegalads.com"
+url: "https://almostillegalads.com"
 author: Andres Soler
 
 technologies:

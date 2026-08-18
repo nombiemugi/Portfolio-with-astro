@@ -66,6 +66,7 @@ export const ui = {
     "projects.title": "Projects",
     "projects.aria": "My projects",
     "projects.technologies": "Technologies:",
+    "projects.visitSite": "Visit the live site",
     "projects.status.developed": "Developed",
     "projects.status.in-development": "In development",
 
@@ -111,7 +112,7 @@ export const ui = {
     // Footer
     "footer.copyright": "Created in Bogota, Colombia",
     "footer.built1": "Built with love using",
-    "footer.built2": "Look at some of my projects on",
+    "footer.built2": " Look at some of my projects on ",
   },
   es: {
     // Meta
@@ -168,6 +169,7 @@ export const ui = {
     "projects.title": "Proyectos",
     "projects.aria": "Mis proyectos",
     "projects.technologies": "Tecnologías:",
+    "projects.visitSite": "Visitar el sitio",
     "projects.status.developed": "Desarrollado",
     "projects.status.in-development": "En desarrollo",
 
@@ -212,6 +214,6 @@ export const ui = {
     // Footer
     "footer.copyright": "Creado en Bogotá, Colombia",
     "footer.built1": "Hecho con amor usando",
-    "footer.built2": "Mira algunos de mis proyectos en",
+    "footer.built2": " Mira algunos de mis proyectos en ",
   },
 } as const;

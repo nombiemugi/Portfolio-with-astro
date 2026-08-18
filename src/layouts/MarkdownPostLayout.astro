@@ -34,6 +34,17 @@ const technologies = Array.isArray(frontmatter.technologies)
             {t('projects.technologies')} {technologies}
           </h2>
 
+          {frontmatter.url && (
+            <a
+              href={frontmatter.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block mt-3 font-semibold text-[var(--accent)] hover:text-[var(--accent-glow)] transition-colors duration-300"
+            >
+              {t('projects.visitSite')} &rarr;
+            </a>
+          )}
+
           <div class="text-sm md:text-base lg:text-lg mt-4 w-full">
             <div class="w-full max-w-none">
               <slot />

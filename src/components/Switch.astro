@@ -8,7 +8,7 @@ import "../styles/global.css";
 </div>
 
 <script>
-  function applyTheme(theme) {
+  function applyTheme(theme: 'dark' | 'light') {
     const root = document.documentElement;
     if (theme === 'dark') {
       root.setAttribute('data-theme', 'dark');
@@ -19,7 +19,7 @@ import "../styles/global.css";
   }
 
   // ESTE BLOQUE SE EJECUTA INMEDIATAMENTE, NO ESPERA DOMContentLoaded
-  const checkbox = document.getElementById('checkbox');
+  const checkbox = document.getElementById('checkbox') as HTMLInputElement | null;
   const savedTheme = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const initialTheme = savedTheme ? savedTheme : (prefersDark ? 'dark' : 'light');
