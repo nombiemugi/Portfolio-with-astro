@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npm install --no-fund --no-audit)",
+      "PowerShell(npx astro build; Write-Output \"=== EXIT: $LASTEXITCODE ===\")"
+    ]
+  }
+}
